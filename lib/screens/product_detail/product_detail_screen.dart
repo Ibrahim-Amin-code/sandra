@@ -3,18 +3,14 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
-import 'package:sandra_app/screens/cart/cart.dart';
 import 'package:sandra_app/screens/cart/componnent/constant.dart';
 import 'package:sandra_app/screens/home/home_component/home_component.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
 import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
-import 'package:sandra_app/screens/menu_screens/wish_list/component/wish_list_component.dart';
-import 'package:sandra_app/screens/product_detail/product_detail_component/product_description.dart';
 import 'package:sandra_app/screens/product_detail/product_detail_component/product_detail_component.dart';
-import 'package:sandra_app/screens/see_all/sell_all_screen.dart';
+import 'package:sandra_app/screens/see_all/see_all_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -111,7 +107,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
                 SizedBox(height: 1.h,),
                 Text(
-                  '${LocaleKeys.Price.tr()} :'+'${HomeCubit.get(context).productDetailsModel.data.price.toString()} Eg',
+                  '${LocaleKeys.Price.tr()} :  '+'${HomeCubit.get(context).productDetailsModel.data.price.toString()} \$',
                   style: TextStyle(
                     fontSize: 11.sp,
                     color: HexColor('#4CB8BA'),

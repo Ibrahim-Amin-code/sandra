@@ -32,6 +32,7 @@ class AppCubit extends Cubit<AppStates>{
 
   late Database database;
   List<Map> favourites = [];
+
   Map<String, bool> isfavourite = {};
 
   void createDb() {

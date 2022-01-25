@@ -3,7 +3,7 @@
 // import 'package:sandra_app/screens/components/constants.dart';
 // import 'package:sizer/sizer.dart';
 //
-// import 'componnent/body.dart';
+// import 'componnent/see_all_body.dart';
 // import 'package:easy_localization/easy_localization.dart';
 //
 // // ignore: use_key_in_widget_constructors

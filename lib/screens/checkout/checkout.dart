@@ -4,7 +4,7 @@
 // import 'package:sandra_app/generated/locale_keys.g.dart';
 // import 'package:sandra_app/screens/components/constants.dart';
 //
-// import 'componnent/body.dart';
+// import 'componnent/see_all_body.dart';
 //
 // // ignore: use_key_in_widget_constructors
 // class CheckoutScren extends StatelessWidget {

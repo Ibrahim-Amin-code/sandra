@@ -8,7 +8,7 @@ import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
 import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
 import 'package:sandra_app/screens/product_detail/product_detail_screen.dart';
-import 'package:sandra_app/screens/see_all/sell_all_screen.dart';
+import 'package:sandra_app/screens/see_all/see_all_screen.dart';
 
 import 'package:sizer/sizer.dart';
 import 'package:easy_localization/easy_localization.dart';

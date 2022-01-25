@@ -7,10 +7,12 @@ import 'package:sandra_app/generated/locale_keys.g.dart';
 import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
-import 'package:sandra_app/screens/see_all/sell_all_screen.dart';
+import 'package:sandra_app/screens/see_all/see_all_screen.dart';
 import '../search_class.dart';
 import 'categories_component/component.dart';
 import 'package:sizer/sizer.dart';
+
+import 'category_search_class.dart';
 
 class CategoriesScreen extends StatelessWidget {
   @override
@@ -41,7 +43,7 @@ class CategoriesScreen extends StatelessWidget {
              children: [
                InkWell(
                    onTap: (){
-                     showSearch(context: context, delegate: ProductsSearch());
+                     showSearch(context: context, delegate: CategorySearch());
                    },
                    child: buildSearchCardInCategoriesScreen()),
                SizedBox(height: 3.h,),

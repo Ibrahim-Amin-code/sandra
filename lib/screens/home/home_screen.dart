@@ -14,7 +14,6 @@ import 'package:sandra_app/screens/layout/layout_screen.dart';
 import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
 import 'package:sandra_app/screens/new_products/new_products.dart';
 import 'package:sandra_app/screens/offers/offer_data.dart';
-import 'package:sandra_app/screens/see_all/sell_all_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import '../search_class.dart';

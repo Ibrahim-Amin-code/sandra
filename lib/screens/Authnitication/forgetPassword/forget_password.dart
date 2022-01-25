@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:sandra_app/screens/components/constants.dart';
 //
-// import 'componnent/body.dart';
+// import 'componnent/see_all_body.dart';
 //
 // class ForgetPasswordScreen extends StatelessWidget {
 //   const ForgetPasswordScreen({Key? key}) : super(key: key);

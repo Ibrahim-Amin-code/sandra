@@ -2,7 +2,7 @@
 // import 'package:sandra_app/generated/locale_keys.g.dart';
 // import 'package:sandra_app/screens/components/constants.dart';
 // import 'package:sandra_app/screens/layout/layout_screen.dart';
-// import 'componnent/body.dart';
+// import 'componnent/see_all_body.dart';
 // import 'package:sizer/sizer.dart';
 // import 'package:easy_localization/easy_localization.dart';
 //
