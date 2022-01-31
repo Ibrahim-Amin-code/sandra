@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
-import 'package:sandra_app/models/all_offers.dart';
 import 'package:sandra_app/screens/categories/categories_screen.dart';
-import 'package:sandra_app/screens/home/home_component/home_component.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_screen.dart';
 import 'package:sandra_app/screens/more/more_screen.dart';
-import 'package:sandra_app/screens/my_orders/my_orders_screen.dart';
 import 'package:sandra_app/screens/offers/offers_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -30,7 +28,6 @@ List<Widget> screens = [
   CategoriesScreen(),
   OffersScreen(),
   HomeScreen(),
-  // MyOrdersScreen(),
   MoreScreen(),
 ];
 
@@ -57,8 +54,6 @@ getscreen(){
   @override
   Widget build(BuildContext context) {
 
- var cubit = AppCubit.get(context);
-
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -83,9 +78,6 @@ getscreen(){
               BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage("assets/images/home.png")),
                   label: LocaleKeys.Home.tr()),
-              // BottomNavigationBarItem(
-              //     icon: ImageIcon(AssetImage("assets/images/my-orders.png")),
-              //     label: LocaleKeys.My_Orders.tr()),
               BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage("assets/images/more.png")),
                   label: LocaleKeys.More.tr()),
@@ -98,8 +90,6 @@ getscreen(){
             type: BottomNavigationBarType.fixed,
             selectedLabelStyle: TextStyle(fontFamily: 'OpenSans',fontSize: 11,fontWeight: FontWeight.w600,),
             unselectedLabelStyle: TextStyle(fontFamily: 'OpenSans',fontSize: 11,fontWeight: FontWeight.w600,),
-            // unselectedLabelStyle: TextStyle(fontFamily: 'Cairo',fontSize: 10,fontWeight: FontWeight.bold,color: Colors.red),
-            // iconSize: 25,
           ),
         );
       },

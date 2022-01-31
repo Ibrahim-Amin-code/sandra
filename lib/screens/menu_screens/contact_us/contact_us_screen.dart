@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
-import 'package:sandra_app/screens/home/home_component/home_component.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
 import 'package:sandra_app/screens/layout/layout_screen.dart';

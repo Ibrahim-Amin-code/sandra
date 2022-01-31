@@ -6,9 +6,7 @@ abstract class  LocaleKeys {
   static const Skip = 'Skip';
   static const Login_As_Buyer = 'Login As Buyer';
   static const Login_As_Guest = 'Login As Guest';
-  // "Login As Buyer":"تسجيل الدخول كبائع",
-  //     "Login As Guest":"تسجيل الدخول كمستخدم",
-  static const Brands = 'Brands';
+   static const Brands = 'Brands';
   static const Deals = 'Deals';
   static const New_Products = 'New Products';
   static const Mostiviewed_Products = 'Mostiviewed Products';
@@ -17,7 +15,6 @@ abstract class  LocaleKeys {
   static const Share = 'Share';
   static const About_Us = 'About Us';
   static const Welcome_Sandra = 'Welcome';
-  // "Welcome":"Welcome In Sandra",
   static const Contact_Us = 'Contact Us';
   static const Wish_List = 'Wish List';
   static const My_Orders = 'My Orders';

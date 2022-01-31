@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_component/home_component.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
@@ -30,10 +31,7 @@ buildBrandDataInHomeScreen()=> BlocConsumer<HomeCubit,HomeState>(
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => SeeAllScreen(
-                        // id: '',
-                        // brandId: HomeCubit.get(context).data[index]['id'].toString(),
-                      )));
+                      builder: (context) => SeeAllScreen()));
             },
                 child: buildBrandsItem(
                 context: context,
@@ -47,8 +45,6 @@ buildBrandDataInHomeScreen()=> BlocConsumer<HomeCubit,HomeState>(
       fallback: (context)=>  Center(child: CircularProgressIndicator(
         color: HexColor('ffcdd2'),
       )),
-      // child:
     );
   },
-  // child: ,
 );

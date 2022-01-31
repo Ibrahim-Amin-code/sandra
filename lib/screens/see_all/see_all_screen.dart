@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sandra_app/screens/components/constants.dart';
-// import 'package:flutter_svg/svg.dart';
-// import 'package:nibton_app/components/constants.dart';
 import 'see_all_body.dart';
 import 'components/compoenet.dart';
 

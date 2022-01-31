@@ -17,22 +17,6 @@ class _SplashState extends State<Splash> {
 
   @override
 
-  Widget screen = LoginOrSignupScreen();
-
-  void getScreen()async{
-    bool isLogin = await CacheHelper.getData(key: 'isLogin');
-    if(isLogin == true)
-    {
-      setState(() {
-        screen = LayoutScreen(index: 0);
-      });
-    }else{
-      setState(() {
-        screen = LoginOrSignupScreen();
-      });
-    }
-  }
-
   void initState() {
     HomeCubit.get(context).getAllProducts();
     HomeCubit.get(context).getProducts(id: '',brandId: '');
@@ -46,8 +30,8 @@ class _SplashState extends State<Splash> {
     Timer(
         Duration(seconds: 2),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => screen)));
-    getScreen();
+            builder: (BuildContext context) => LoginOrSignupScreen())));
+    // getScreen();
   }
 
   @override
@@ -55,7 +39,6 @@ class _SplashState extends State<Splash> {
     return  Scaffold(
       backgroundColor: HexColor('#ffcdd2'),
       appBar: AppBar(
-        // backgroundColor:HexColor('#3b5998'),
         toolbarHeight: 0,
         automaticallyImplyLeading: false,
         elevation: 0,

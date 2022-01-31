@@ -11,14 +11,11 @@ Widget buildSearchCardInCategoriesScreen()=> Container(
   padding: EdgeInsets.symmetric(horizontal: 2.w),
   child: Container(
     decoration: BoxDecoration(
-        // color: Colors.red,
         color: HexColor('#727C8E').withOpacity(0.2),
         borderRadius: BorderRadius.circular(5)
     ),
-    // margin:  EdgeInsets.only(right: 15.w,bottom:7.h ,top: 7.h,left:14.w ),
     padding: EdgeInsets.symmetric(horizontal: 5.w,),
     height:  8.h,
-    // width: 346,
     child: Row(
       children: [
         Image.asset('assets/images/Search.png'),

@@ -20,8 +20,6 @@ class CodegenLoader extends AssetLoader {
     "Skip": "<< لاحقا",
     "TitlePassword": "أدخل عنوان البريد الإلكتروني الذي استخدمته لإنشاء حسابك وسنرسل لك رابطًا عبر البريد الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك",
     "Welcome , Please Create your Account": "مرحبًا ، الرجاء إنشاء حسابك",
-
-
     "Login_big_lable": "دعنا نسجل دخولك",
     "Signup_small_lable": "سجل لترى منتجاتنا",
     "Signup_big_lable": "إنشاء حساب جديد",
@@ -75,9 +73,6 @@ class CodegenLoader extends AssetLoader {
     "First_Name": "الإسم الاول",
     "Last_Name": "الإسم الاخير",
     "Full_Name": "الإسم بالكامل",
-
-    // "Full_Name":"الإسم بالكامل",
-
     "Change_Password": "تغيير كلمة المرور",
     "E_Mail": "البريد الاكتروني",
     "Select_Gender": "إختار النوع",

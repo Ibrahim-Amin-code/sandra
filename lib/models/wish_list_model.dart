@@ -115,16 +115,6 @@ class ProductImage {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['id'] = this.id;
-  //   data['productId'] = this.productId;
-  //   data['image'] = this.image;
-  //   data['created_at'] = this.createdAt;
-  //   data['updated_at'] = this.updatedAt;
-  //   return data;
-  // }
 }
 
 class Colors {
@@ -144,15 +134,7 @@ class Colors {
     updatedAt = json['updated_at'];
   }
 
-// Map<String, dynamic> toJson() {
-//   final Map<String, dynamic> data = new Map<String, dynamic>();
-//   data['id'] = this.id;
-//   data['productId'] = this.productId;
-//   data['name'] = this.name;
-//   data['created_at'] = this.createdAt;
-//   data['updated_at'] = this.updatedAt;
-//   return data;
-// }
+
 }
 
 class Sizes {
@@ -172,13 +154,4 @@ class Sizes {
     updatedAt = json['updated_at'];
   }
 
-// Map<String, dynamic> toJson() {
-//   final Map<String, dynamic> data = new Map<String, dynamic>();
-//   data['id'] = this.id;
-//   data['productId'] = this.productId;
-//   data['size'] = this.size;
-//   data['created_at'] = this.createdAt;
-//   data['updated_at'] = this.updatedAt;
-//   return data;
-// }
 }

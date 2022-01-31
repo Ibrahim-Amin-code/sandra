@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sandra_app/screens/home/home_component/home_component.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sizer/sizer.dart';
 
 

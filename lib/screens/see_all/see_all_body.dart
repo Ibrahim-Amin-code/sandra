@@ -8,7 +8,6 @@ import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
 import 'package:sandra_app/screens/layout/cubit/cubit.dart';
 import 'package:sandra_app/screens/layout/cubit/states.dart';
-import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
 import 'package:sandra_app/screens/product_detail/product_detail_screen.dart';
 import 'package:sandra_app/screens/see_all/components/product_list.dart';
 import 'package:sizer/sizer.dart';
@@ -201,31 +200,6 @@ class _AllproductBodyState extends State<AllproductBody>
                                                     fontWeight: FontWeight.w600,
                                                     fontSize: 11.sp),
                                               ),
-                                              // Text(
-                                              //   '|',
-                                              //   style: TextStyle(
-                                              //     color: HexColor('#C9C9C9'),
-                                              //     fontFamily: 'OpenSans',
-                                              //     fontWeight: FontWeight.w600,
-                                              //     fontSize: 14,
-                                              //   ),
-                                              // ),
-                                              // Text(
-                                              //   'SAR 300',
-                                              //   style: TextStyle(
-                                              //     color: HexColor('#C9C9C9'),
-                                              //     fontFamily: 'OpenSans',
-                                              //     fontWeight: FontWeight.w600,
-                                              //     fontSize: 11.sp,
-                                              //     decoration: TextDecoration
-                                              //         .lineThrough,
-                                              //     decorationStyle:
-                                              //         TextDecorationStyle
-                                              //             .double,
-                                              //     decorationColor:
-                                              //         HexColor('C9C9C9'),
-                                              //   ),
-                                              // ),
                                             ],
                                           ),
                                         ),

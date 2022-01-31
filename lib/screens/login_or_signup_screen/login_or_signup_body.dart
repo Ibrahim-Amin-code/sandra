@@ -4,17 +4,13 @@ import 'package:sandra_app/network/cache/cache_helper.dart';
 import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/layout/layout_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginOrSignupBody extends StatelessWidget {
 
 
   @override
   Widget build(BuildContext context) {
-
-    bool isLogin = false;
-    CacheHelper.saveData(key: 'isLogin', value: false);
-
-
 
 
     return Column(
@@ -52,13 +48,11 @@ class LoginOrSignupBody extends StatelessWidget {
                     width: 250,
                     isUpperCase: true,
                     function: (){
-                      CacheHelper.saveData(key: 'isLogin', value: true);
+                      // CacheHelper.saveData(key: 'isLogin', value: true);
                       Navigator.push(context,  MaterialPageRoute(builder: (context)=> LayoutScreen(index: 0)));
                     },
                     background: HexColor('E3319D'),
-
-                    // background: Colors.transparent,
-                    radius: 20,
+                     radius: 20,
                   ),
                 ),
                 SizedBox(height: 20,),
@@ -73,9 +67,8 @@ class LoginOrSignupBody extends StatelessWidget {
                     background: HexColor('E3319D'),
                     isUpperCase: true,
                     function: (){
-                      // Navigator.push(context,  MaterialPageRoute(builder: (context)=> SignUpScreen()));
-                    },
-                    // background: Colors.transparent,
+                      launch("https://findfamily.net/eshop/vendors/dashboard");
+                      },
                     radius: 20,
                   ),
                 ),

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
 import 'package:sandra_app/network/cache/cache_helper.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
-import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
 import 'package:sandra_app/screens/product_detail/product_detail_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:sandra_app/screens/home/home_component/home_component.dart';
@@ -53,11 +53,6 @@ class OffersScreen extends StatelessWidget {
                     shrinkWrap: true,
                     itemBuilder: (context, index) => InkWell(
                       onTap: (){
-                        // CacheHelper.saveData(
-                        //     key: 'productId',
-                        //     value: HomeCubit.get(context).offersModel.data![index].id.toString());
-                        // final String productId = await CacheHelper.getData(key: 'productId');
-                        // print('productId=========================================${productId}');
                         Navigator.push(context, MaterialPageRoute(
                             builder: (context)=>ProductDetailsScreen(
                                 // id: productId

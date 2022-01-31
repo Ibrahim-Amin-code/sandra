@@ -5,7 +5,6 @@ import 'package:sandra_app/generated/locale_keys.g.dart';
 import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/layout/cubit/cubit.dart';
 import 'package:sandra_app/screens/layout/cubit/states.dart';
-import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:easy_localization/easy_localization.dart';

@@ -1,19 +1,20 @@
+
+
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
-import 'package:sandra_app/screens/cart/componnent/constant.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_component/home_component.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
-import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
 import 'package:sandra_app/screens/product_detail/product_detail_component/product_detail_component.dart';
 import 'package:sandra_app/screens/see_all/see_all_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 
 class ProductDetailsScreen extends StatefulWidget {
   // final String id;
@@ -158,74 +159,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   //quantity
                   style: TextStyle(
                     fontSize: 16,
-                    color: HexColor('#515C6F'),
+                    color: HexColor('515C6F'),
                     fontFamily: 'OpenSans',
                     fontWeight: FontWeight.w600,
                   ),
                 ),
 
-                // SizedBox(height: 1.h,),
-                // Text(
-                //   'Nwe Price:  '+'${HomeCubit.get(context).productDetailsModel.data.price.toString()}',
-                //   style: TextStyle(
-                //     fontSize: 11.sp,
-                //     color: HexColor('#4CB8BA'),
-                //     fontFamily: 'OpenSans',
-                //     fontWeight: FontWeight.w600,
-                //   ),
-                // ),
-                // SizedBox(
-                //   width: 3.w,
-                // ),
-                // Text(
-                //   '|',
-                //   style: TextStyle(
-                //     fontSize: 14,
-                //     color: HexColor('#C9C9C9'),
-                //     fontFamily: 'OpenSans',
-                //     fontWeight: FontWeight.w600,
-                //   ),
-                // ),
-                // SizedBox(
-                //   width: 2.w,
-                // ),
-                // Text(
-                //   'SAR 300',
-                //   style: TextStyle(
-                //     color: HexColor('#C9C9C9'),
-                //     fontFamily: 'OpenSans',
-                //     fontWeight: FontWeight.w600,
-                //     fontSize: 11.sp,
-                //     decoration: TextDecoration.lineThrough,
-                //     decorationStyle: TextDecorationStyle.double,
-                //     decorationColor: HexColor('C9C9C9'),
-                //   ),
-                // ),
-                // Row(
-                //   children: [
-                //     Text(
-                //       LocaleKeys.Availability.tr() +':',
-                //       style: TextStyle(
-                //         fontSize: 16,
-                //         color: HexColor('#515C6F'),
-                //         fontFamily: 'OpenSans',
-                //         fontWeight: FontWeight.w600,
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 5,
-                //     ),
-                //     Text(
-                //       HomeCubit.get(context).productDetailsModel.data.quantity.toString(),
-                //       style: TextStyle(
-                //         fontSize: 16,
-                //         color: HexColor('#4CB8BA'),
-                //         fontFamily: 'OpenSans',
-                //         fontWeight: FontWeight.w600,
-                //       ),
-                //     )
-                //   ],
-                // ),
                 SizedBox(height: 1.h,),
 
                 buildAddToCartRow(
@@ -233,7 +172,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                     price: HomeCubit.get(context).productDetailsModel.data.price.toString(),
                     id: HomeCubit.get(context).productDetailsModel.data.id.toString()),
-                //id: HomeHomeCubit.get(context).productDetailsModel.get(context).getProductsModel.data[index].id.toString()
 
 
                 SizedBox(height: 2.h,),
@@ -259,8 +197,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       width: 10.w,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: HexColor(HomeCubit.get(context).productDetailsModel.data.color[index].toString(),
-                        ),
+                        color: HexColor(HomeCubit.get(context).productDetailsModel.data.color[index].toString(),),
                       ),
                     ),
                     separatorBuilder: (context,index) => SizedBox(width: 15,),
@@ -359,8 +296,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 InkWell(
                     onTap: (){
                       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>SeeAllScreen(
-                        // id: HomeCubit.get(context).productDetailsModel.data.categoryId.toString(),
-                        // brandId: HomeCubit.get(context).productDetailsModel.data.shopId.toString(),
                       )), (route) => false);
                     },
                     child: buildSeeAllButton()),

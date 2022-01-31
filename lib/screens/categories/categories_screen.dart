@@ -8,7 +8,6 @@ import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
 import 'package:sandra_app/screens/see_all/see_all_screen.dart';
-import '../search_class.dart';
 import 'categories_component/component.dart';
 import 'package:sizer/sizer.dart';
 

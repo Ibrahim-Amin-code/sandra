@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_component/home_component.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
@@ -27,10 +28,7 @@ buildCategoryInHomeScreen() => BlocConsumer<HomeCubit, HomeState>(
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => SeeAllScreen(
-                            // brandId: '',
-                            // id: HomeCubit.get(context).categories[index]['id'].toString(),
-                          )));
+                      builder: (context) => SeeAllScreen()));
             },
             child: buildCategoriesItems(
                 pathImage: HomeCubit.get(context).categories[index]

@@ -105,3 +105,6 @@ class GetProductDetailsErrorState extends HomeState{
   final String error;
   GetProductDetailsErrorState(this.error);
 }
+
+class ChangeAppLang extends HomeState{}
+class ChangeAppLang2 extends HomeState{}

@@ -2,17 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
-import 'package:sandra_app/screens/Review/review.dart';
 import 'package:sandra_app/screens/Review/write%20review/write_review.dart';
-import 'package:sandra_app/screens/cart/cart.dart';
-import 'package:sandra_app/screens/home/home_component/home_component.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/layout/cubit/cubit.dart';
 import 'package:sandra_app/screens/layout/cubit/states.dart';
 import 'package:sizer/sizer.dart';
-import 'package:sandra_app/screens/menu_screens/wish_list/wish_list_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,10 +23,6 @@ Widget buildAddToCartAndWishListContainer({
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: color,
-
-          // gradient: LinearGradient(
-          //     colors: [HexColor('#FF9000'), HexColor('#FFBE03')]),
-          // HexColor('E3319D')
       ),
       child: Row(
         children: [
@@ -45,7 +37,6 @@ Widget buildAddToCartAndWishListContainer({
           ),
           Spacer(),
           widget,
-          // Image.asset('assets/images/1216841.png',height: 25,width: 25,color: Colors.green.shade900,),
         ],
       ),
     );
@@ -103,42 +94,6 @@ Widget buildAddToWishListRow({context,required String id,}) => Row(
 
 Widget buildAddToCartRow({context, required String price,required String id,}) => Row(
       children: [
-        // Text(
-        //   price,
-        //   style: TextStyle(
-        //     fontSize: 11.sp,
-        //     color: HexColor('#4CB8BA'),
-        //     fontFamily: 'OpenSans',
-        //     fontWeight: FontWeight.w600,
-        //   ),
-        // ),
-        // SizedBox(
-        //   width: 3.w,
-        // ),
-        // Text(
-        //   '|',
-        //   style: TextStyle(
-        //     fontSize: 14,
-        //     color: HexColor('#C9C9C9'),
-        //     fontFamily: 'OpenSans',
-        //     fontWeight: FontWeight.w600,
-        //   ),
-        // ),
-        // SizedBox(
-        //   width: 2.w,
-        // ),
-        // Text(
-        //   'SAR 300',
-        //   style: TextStyle(
-        //     color: HexColor('#C9C9C9'),
-        //     fontFamily: 'OpenSans',
-        //     fontWeight: FontWeight.w600,
-        //     fontSize: 11.sp,
-        //     decoration: TextDecoration.lineThrough,
-        //     decorationStyle: TextDecorationStyle.double,
-        //     decorationColor: HexColor('C9C9C9'),
-        //   ),
-        // ),
         Row(
           children: [
             Text(
@@ -220,53 +175,3 @@ Widget buildSeeAllButton() => Container(
       ),
     );
 
-// Widget buildRatingBarRow(context) => Row(
-//       children: [
-//         RatingBar.builder(
-//           initialRating: 3,
-//           minRating: 1,
-//           direction: Axis.horizontal,
-//           allowHalfRating: true,
-//           itemCount: 5,
-//           itemSize: 23,
-//           // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-//           itemBuilder: (context, _) => Icon(
-//             Icons.star,
-//             color: Colors.amber,
-//           ),
-//           onRatingUpdate: (rating) {
-//             print(rating);
-//           },
-//         ),
-//         SizedBox(
-//           width: 3.w,
-//         ),
-//         // InkWell(
-//         //   onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ReviewScreen()),),
-//         //   child: Text(
-//         //     '1 ${LocaleKeys.Review.tr()} ',
-//         //     style: TextStyle(
-//         //       fontSize: 10.sp,
-//         //       color: HexColor('#C9C9C9'),
-//         //       fontFamily: 'OpenSans',
-//         //       fontWeight: FontWeight.w600,
-//         //     ),
-//         //   ),
-//         // ),
-//         // SizedBox(
-//         //   width: 1.w,
-//         // ),
-//         // InkWell(
-//         //   onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>WriteReviewScreen()),),
-//         //   child: Text(
-//         //     '| ${LocaleKeys.Write_Review.tr()}',
-//         //     style: TextStyle(
-//         //       fontSize: 10.sp,
-//         //       color: HexColor('#C9C9C9'),
-//         //       fontFamily: 'OpenSans',
-//         //       fontWeight: FontWeight.w600,
-//         //     ),
-//         //   ),
-//         // )
-//       ],
-//     );

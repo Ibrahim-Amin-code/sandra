@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
                     ..getBanners()
                     ..getAllOffers()
                     ..getProductDetails( id: '')
-                    ..contactInfo(),
+                    ..contactInfo()..changeAppLang(),
 
               ),
             ],

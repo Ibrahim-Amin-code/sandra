@@ -16,15 +16,7 @@ class SearchModel {
     }
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['status'] = this.status;
-  //   data['msg'] = this.msg;
-  //   if (this.data != null) {
-  //     data['data'] = this.data.map((v) => v.toJson()).toList();
-  //   }
-  //   return data;
-  // }
+
 }
 
 class Data {
@@ -101,33 +93,6 @@ class Data {
     }
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['id'] = this.id;
-  //   data['categoryId'] = this.categoryId;
-  //   data['shopId'] = this.shopId;
-  //   data['name'] = this.name;
-  //   data['description'] = this.description;
-  //   data['price'] = this.price;
-  //   data['quantity'] = this.quantity;
-  //   data['modal_number'] = this.modalNumber;
-  //   data['department'] = this.department;
-  //   data['cover_img'] = this.coverImg;
-  //   data['slug'] = this.slug;
-  //   data['status'] = this.status;
-  //   data['created_at'] = this.createdAt;
-  //   data['updated_at'] = this.updatedAt;
-  //   if (this.productImage != null) {
-  //     data['product_image'] = this.productImage.map((v) => v.toJson()).toList();
-  //   }
-  //   if (this.colors != null) {
-  //     data['colors'] = this.colors.map((v) => v.toJson()).toList();
-  //   }
-  //   if (this.sizes != null) {
-  //     data['sizes'] = this.sizes.map((v) => v.toJson()).toList();
-  //   }
-  //   return data;
-  // }
 }
 
 class ProductImage {
@@ -148,15 +113,6 @@ class ProductImage {
     updatedAt = json['updated_at'];
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['id'] = this.id;
-  //   data['productId'] = this.productId;
-  //   data['image'] = this.image;
-  //   data['created_at'] = this.createdAt;
-  //   data['updated_at'] = this.updatedAt;
-  //   return data;
-  // }
 }
 
 class Colors {
@@ -176,15 +132,6 @@ class Colors {
     updatedAt = json['updated_at'];
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['id'] = this.id;
-  //   data['productId'] = this.productId;
-  //   data['name'] = this.name;
-  //   data['created_at'] = this.createdAt;
-  //   data['updated_at'] = this.updatedAt;
-  //   return data;
-  // }
 }
 
 class Sizes {
@@ -203,14 +150,4 @@ class Sizes {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['id'] = this.id;
-  //   data['productId'] = this.productId;
-  //   data['size'] = this.size;
-  //   data['created_at'] = this.createdAt;
-  //   data['updated_at'] = this.updatedAt;
-  //   return data;
-  // }
 }

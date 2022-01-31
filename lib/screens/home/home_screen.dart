@@ -7,11 +7,11 @@ import 'package:sandra_app/generated/locale_keys.g.dart';
 import 'package:sandra_app/screens/all_brands/all_brands_screen.dart';
 import 'package:sandra_app/screens/all_brands/brand_data.dart';
 import 'package:sandra_app/screens/categories/category_data.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_component/home_component.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
 import 'package:sandra_app/screens/layout/layout_screen.dart';
-import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
 import 'package:sandra_app/screens/new_products/new_products.dart';
 import 'package:sandra_app/screens/offers/offer_data.dart';
 import 'package:sizer/sizer.dart';
@@ -171,44 +171,6 @@ class HomeScreen extends StatelessWidget {
             },
           ),
           SizedBox(height: 2.h,),
-          // Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 2.w),
-          //   child: Row(
-          //     children: [
-          //       Text(LocaleKeys.Mostiviewed_Products.tr(),style: TextStyle(color: HexColor('#515C6F'),
-          //           fontWeight: FontWeight.bold,
-          //           fontFamily: 'OpenSans',
-          //           fontSize: 12.sp
-          //       ),),
-          //       Spacer(),
-          //       InkWell(
-          //         onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SeeAllScreen(
-          //           // id: '',
-          //           // brandId: '',
-          //         ))),
-          //         child: Row(
-          //           children: [
-          //             Icon(Icons.arrow_back_ios,color: HexColor('#515C6F'),size: 15,),
-          //             Icon(Icons.arrow_forward_ios,color: HexColor('#515C6F'),size: 15,),
-          //           ],
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          // SizedBox(height: 2.h,),
-          // Container(
-          //   height: MediaQuery.of(context).size.height*0.42,
-          //   child: ListView.separated(
-          //       shrinkWrap: false,
-          //       primary: false,
-          //       padding: EdgeInsets.symmetric(horizontal: 2.w,),
-          //       scrollDirection: Axis.horizontal,
-          //       itemBuilder: (context,index)=>NationalDayProductsItem(image: 'assets/images/Image 37.png',context: context),
-          //       separatorBuilder:(context,index)=>SizedBox(width: 2.w,),
-          //       itemCount:5),
-          // ),
-          // SizedBox(height: 10,)
         ],
       ),
     );

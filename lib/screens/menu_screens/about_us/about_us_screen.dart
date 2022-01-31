@@ -6,7 +6,6 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sandra_app/screens/cart/componnent/constant.dart';
 import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
@@ -40,10 +39,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
       final Uri params = Uri(
           scheme: 'mailto',
           path: HomeCubit.get(context).contactModel.data!.email,
-          // queryParameters: {
-          //   'subject': 'Default Subject',
-          //   'body': 'Default body'
-          // }
+
       );
       String url = params.toString();
       if (await canLaunch(url)) {

@@ -8,7 +8,6 @@ import 'package:sandra_app/models/search_model.dart';
 import 'package:sandra_app/network/cache/cache_helper.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/layout/cubit/cubit.dart';
-import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
 import 'package:sandra_app/screens/product_detail/product_detail_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:http/http.dart' as http;
@@ -268,54 +267,6 @@ class ProductsSearch extends SearchDelegate {
         },
     );
   }
-
-//   Widget buildSearchProduct({
-//   required String image,
-//     required context,
-//   required String price,
-//   required String name,
-//   // required String image,
-// })=> Card(
-//     child: Row(
-//       children: [
-//         Container(
-//             height: 24.h,
-//             width: 40.w,
-//             child: customCachedNetworkImage(url: image, context: context, fit: BoxFit.contain)),
-//           SizedBox(width: 5,),
-//         Column(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             Text(
-//               name,
-//               style: TextStyle(
-//                   color: HexColor('#515C6F'),
-//                   fontFamily: 'OpenSans',
-//                   fontWeight: FontWeight.w600,
-//                   fontSize: 13.sp),
-//             ),
-//             SizedBox(height: 5,),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: [
-//                 Text(
-//                  'SAR  ' + price + ' ',
-//                   style: TextStyle(
-//                       color: HexColor('#4CB8BA'),
-//                       fontFamily: 'OpenSans',
-//                       fontWeight: FontWeight.w600,
-//                       fontSize: 12.sp),
-//                 ),
-//               ],
-//             ),
-//
-//           ],
-//         )
-//       ],
-//     ),
-//   );
-
 
   @override
   Widget buildSuggestions(BuildContext context) {

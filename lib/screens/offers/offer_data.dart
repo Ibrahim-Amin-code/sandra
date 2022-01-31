@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_component/home_component.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
@@ -25,9 +26,7 @@ buildOffersInHomeScreen()=>BlocConsumer<HomeCubit,HomeState>(
               itemBuilder: (context,index)=>InkWell(
                    onTap:  (){
                   Navigator.push(context, MaterialPageRoute(
-                      builder: (context)=>ProductDetailsScreen(
-                          // id: HomeCubit.get(context).offersModel.data![index].id.toString(),
-                      )));
+                      builder: (context)=>ProductDetailsScreen()));
                   HomeCubit.get(context).getProductDetails(id: HomeCubit.get(context).offersModel.data![index].id.toString(),);
                    },
                 child: buildOffersCardRow(

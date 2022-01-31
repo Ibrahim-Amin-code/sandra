@@ -11,15 +11,7 @@ class ContactModel {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['status'] = this.status;
-  //   data['msg'] = this.msg;
-  //   if (this.data != null) {
-  //     data['data'] = this.data.toJson();
-  //   }
-  //   return data;
-  // }
+
 }
 
 class Data {
@@ -102,32 +94,5 @@ class Data {
     updatedAt = json['updated_at'];
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['id'] = this.id;
-  //   data['logo'] = this.logo;
-  //   data['title_ar'] = this.titleAr;
-  //   data['title_en'] = this.titleEn;
-  //   data['phone'] = this.phone;
-  //   data['email'] = this.email;
-  //   data['address_ar'] = this.addressAr;
-  //   data['address_en'] = this.addressEn;
-  //   data['longitude'] = this.longitude;
-  //   data['latitude'] = this.latitude;
-  //   data['description_ar'] = this.descriptionAr;
-  //   data['description_en'] = this.descriptionEn;
-  //   data['privacy_ar'] = this.privacyAr;
-  //   data['privacy_en'] = this.privacyEn;
-  //   data['terms_ar'] = this.termsAr;
-  //   data['agreements_ar'] = this.agreementsAr;
-  //   data['agreements_en'] = this.agreementsEn;
-  //   data['terms_en'] = this.termsEn;
-  //   data['return_ar'] = this.returnAr;
-  //   data['return_en'] = this.returnEn;
-  //   data['version'] = this.version;
-  //   data['favicon'] = this.favicon;
-  //   data['created_at'] = this.createdAt;
-  //   data['updated_at'] = this.updatedAt;
-  //   return data;
-  // }
+
 }

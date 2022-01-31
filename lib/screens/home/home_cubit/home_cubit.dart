@@ -31,7 +31,6 @@ class HomeCubit extends Cubit<HomeState> {
     ).then((value) {
       data.clear();
       data.addAll(value.data['data']);
-      // print(data[0]['id'].)
       emit(HomeSuccessState());
     }).catchError((error) {
       emit(HomeErrorState(error.toString()));
@@ -53,7 +52,6 @@ class HomeCubit extends Cubit<HomeState> {
     ).then((value) {
       categories.clear();
       categories.addAll(value.data['data']);
-      // print('------------------------------------------------+' +lang.toString());
       emit(CategoriesSuccessState());
     }).catchError((error) {
       emit(CategoriesErrorState(error.toString()));
@@ -62,7 +60,6 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
 
-  // dynamic getProductsModel;
 
   List products = [];
 
@@ -83,8 +80,6 @@ class HomeCubit extends Cubit<HomeState> {
     ).then((value){
       products.clear();
       products.addAll(value.data['data']);
-      print('--------------------------------------------------------------${value.data}');
-      print(brandId.toString());
       emit(ProductsSuccessState());
     }).catchError((error) {
       emit(ProductsErrorState(error.toString()));
@@ -108,8 +103,6 @@ class HomeCubit extends Cubit<HomeState> {
 
     ).then((value){
       allProducts.clear();
-      print('-ang.toString----------------------------------------------------------------------------------'+lang.toString());
-      print('-value.datavalue.datavalue.datavalue.datavalue.datavalue.data-----------------${value.data}');
       allProducts.addAll(value.data['data']);
 
       emit(AllProductsSuccessState());
@@ -145,7 +138,6 @@ class HomeCubit extends Cubit<HomeState> {
     ).then((value) {
       bannersData.clear();
       bannersData.addAll(value.data['data']);
-      // print(value.data);
       emit(GetBrandSuccessState());
     }).catchError((error) {
       emit(GetBrandErrorState(error.toString()));
@@ -176,7 +168,6 @@ class HomeCubit extends Cubit<HomeState> {
       'message':message,
         }).then((value) {
       contact = value.data;
-          print('contact-------------------------------------------------'+value.data['msg']);
           emit(ContactUsSuccessState());
     }).catchError((error){
       emit(ContactUsErrorState(error.toString()));
@@ -201,13 +192,13 @@ class HomeCubit extends Cubit<HomeState> {
       }
     ).then((value) {
       offersModel = OffersModel.fromJson(value.data);
-      // print('-allOffersModel------------------------------------------------${value.data}');
       emit(AllOffersSuccessState());
     }).catchError((error)
     {
       emit(AllOffersErrorState(error.toString()));
       print(error.toString());
     });
+
   }
 
 
@@ -226,8 +217,6 @@ class HomeCubit extends Cubit<HomeState> {
       }
     ).then((value) {
       productDetailsModel = ProductDetailsModel.fromJson(value.data);
-      // print(value.data);
-      print('id---------------------------------------------------------------${id}-');
 
       emit(GetProductDetailsSuccessState());
     }).catchError((error){
@@ -235,5 +224,35 @@ class HomeCubit extends Cubit<HomeState> {
       emit(GetProductDetailsErrorState(error.toString()));
     });
   }
+
+  bool isLang = false;
+  void changeAppLang() async{
+
+    String lang = await CacheHelper.getData(key: 'lang') ?? "ar";
+
+    if(lang == 'ar'){
+      isLang = true;
+      isLang2 = false;
+      emit(ChangeAppLang());
+    }else{
+      isLang = !isLang;
+      isLang2 = false;
+      CacheHelper.saveData(key: 'isLang', value: isLang).then((value){
+        emit(ChangeAppLang());
+      });
+    }
+
+  }
+
+  bool isLang2 = false;
+  void changeAppLang2(){
+    isLang2 = !isLang2;
+    isLang = false;
+    CacheHelper.saveData(key: 'isLang2', value: isLang2).then((value){
+      emit(ChangeAppLang2());
+    });
+  }
+
+
 
 }

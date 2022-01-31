@@ -6,8 +6,6 @@ import 'package:sandra_app/generated/locale_keys.g.dart';
 import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_cubit/home_cubit.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
-import 'package:sandra_app/screens/menu_screens/profile/profile_component/profile_component.dart';
-import 'package:sandra_app/screens/product_detail/product_detail_screen.dart';
 import 'package:sandra_app/screens/see_all/see_all_screen.dart';
 
 import 'package:sizer/sizer.dart';
@@ -85,10 +83,7 @@ class AllBrands extends StatelessWidget {
        );
        Navigator.push(context, MaterialPageRoute(
            builder: (context)=>
-               SeeAllScreen(
-                 // brandId: id,
-                 // id: '',
-               ),
+               SeeAllScreen(),
        ));
      },
     child: Container(

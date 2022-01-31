@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sandra_app/models/login_model.dart';
 import 'package:sandra_app/screens/categories/categories_screen.dart';
 import 'package:sandra_app/screens/home/home_screen.dart';
 import 'package:sandra_app/screens/layout/cubit/states.dart';
 import 'package:sandra_app/screens/more/more_screen.dart';
-import 'package:sandra_app/screens/my_orders/my_orders_screen.dart';
 import 'package:sandra_app/screens/offers/offers_screen.dart';
 import 'package:sqflite/sqflite.dart';
 
