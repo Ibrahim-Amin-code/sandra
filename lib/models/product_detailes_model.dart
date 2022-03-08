@@ -1,9 +1,9 @@
 class ProductDetailsModel {
   bool? status;
   String? msg;
- late Data data;
+  Data? data;
 
-  ProductDetailsModel({this.status, this.msg, required this.data});
+  ProductDetailsModel({this.status, this.msg, this.data});
 
   ProductDetailsModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];

@@ -17,12 +17,6 @@ import 'package:sizer/sizer.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  // final String id;
-  // final dynamic details;
-  //
-  // const ProductDetailsScreen({Key? key, required this.id, this.details}) : super(key: key);
-
-   // ProductDetailsScreen({Key? key,required this.details}) : super(key: key);
   @override
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
 }
@@ -35,6 +29,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     ];
     List<Color> colors = [HexColor('#000000'), HexColor('#B5994565'), HexColor('#727C8E'),HexColor('#ED5199'),HexColor('#515C6F'),HexColor('#FF8C69'),HexColor('#4CB8BA'),HexColor('#FF9000')];
 
+    // var cubit = HomeCubit.get(context).productDetailsModel;
     // var cubit = HomeCubit.get(context).productDetailsModel;
 
     return Scaffold(

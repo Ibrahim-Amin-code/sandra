@@ -21,10 +21,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
+  List data = [];
 
-   List data=[];
-
-  void getShops(){
+  void getShops() {
     emit(HomeLoadingState());
     DioHelper.getData(
       url: GetShops,
@@ -38,18 +37,14 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+  List categories = [];
 
-  List categories=[];
-
-  void getCategories()async {
-   String lang = await CacheHelper.getData(key: 'lang')?? 'ar';
+  void getCategories() async {
+    String lang = await CacheHelper.getData(key: 'lang') ?? 'ar';
     emit(CategoriesLoadingState());
-    DioHelper.getData(
-      url: GetCategories,
-      query: {
-        'lang':lang,
-      }
-    ).then((value) {
+    DioHelper.getData(url: GetCategories, query: {
+      'lang': lang,
+    }).then((value) {
       categories.clear();
       categories.addAll(value.data['data']);
       emit(CategoriesSuccessState());
@@ -59,25 +54,20 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-
-
   List products = [];
 
   void getProducts({
-     String? id,
-     String? brandId,
+    required String id,
+    String? brandId,
     // required String lang,
-}) async{
-    String lang = await CacheHelper.getData(key: 'lang')??'ar';
+  }) async {
+    String lang = await CacheHelper.getData(key: 'lang') ?? 'ar';
     emit(ProductsLoadingState());
-    DioHelper.getData(
-        url: GetProducts,
-        query: {
-        'categoryId': '$id',
-        'shopId': '$brandId',
-        'lang': lang,
-        }
-    ).then((value){
+    DioHelper.getData(url: GetProducts, query: {
+      'categoryId': id,
+      'shopId': '$brandId',
+      'lang': lang,
+    }).then((value) {
       products.clear();
       products.addAll(value.data['data']);
       emit(ProductsSuccessState());
@@ -87,21 +77,16 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+  List allProducts = [];
 
-  List allProducts=[];
-
-  void getAllProducts() async{
-    String lang = await CacheHelper.getData(key: 'lang')?? 'ar';
+  void getAllProducts() async {
+    String lang = await CacheHelper.getData(key: 'lang') ?? 'ar';
     emit(AllProductsLoadingState());
-    DioHelper.getData(
-        url: GetProducts,
-        query: {
-          'lang': lang,
-          'categoryId':'',
-          'shopId':'',
-        }
-
-    ).then((value){
+    DioHelper.getData(url: GetProducts, query: {
+      'lang': lang,
+      'categoryId': '',
+      'shopId': '',
+    }).then((value) {
       allProducts.clear();
       allProducts.addAll(value.data['data']);
 
@@ -112,14 +97,12 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+  ContactModel contactModel = ContactModel();
 
-
-  ContactModel contactModel =ContactModel();
-
-  void contactInfo(){
+  void contactInfo() {
     emit(ContactInfoLoadingState());
     DioHelper.getData(
-        url: ContactInfo,
+      url: ContactInfo,
     ).then((value) {
       contactModel = ContactModel.fromJson(value.data);
       emit(ContactInfoSuccessState());
@@ -129,12 +112,12 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  List bannersData=[];
+  List bannersData = [];
 
-  void getBanners(){
+  void getBanners() {
     emit(GetBrandLoadingState());
     DioHelper.getData(
-        url: GetBanners,
+      url: GetBanners,
     ).then((value) {
       bannersData.clear();
       bannersData.addAll(value.data['data']);
@@ -145,114 +128,93 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-
   var contact;
 
   void contactUs({
-  required String name,
-  required String subject,
-  required String phone,
-  required String email,
-  required String message,
-})async {
+    required String name,
+    required String subject,
+    required String phone,
+    required String email,
+    required String message,
+  }) async {
     emit(ContactUsLoadingState());
     // String token = await CacheHelper.getData(key: 'token');
-    DioHelper.postContactUsData(
-        url: ContactUs,
+    DioHelper.postContactUsData(url: ContactUs,
         // token: 'Bearer $token',
         data: {
-      'name':name,
-      'subject':subject,
-      'phone':phone,
-      'email':email,
-      'message':message,
+          'name': name,
+          'subject': subject,
+          'phone': phone,
+          'email': email,
+          'message': message,
         }).then((value) {
       contact = value.data;
-          emit(ContactUsSuccessState());
-    }).catchError((error){
+      emit(ContactUsSuccessState());
+    }).catchError((error) {
       emit(ContactUsErrorState(error.toString()));
       print(error.toString());
     });
-
   }
 
+  OffersModel offersModel = OffersModel();
 
-
-  OffersModel offersModel =OffersModel();
-
-  void getAllOffers()async
-  {
+  void getAllOffers() async {
     emit(AllOffersLoadingState());
-    String lang = await CacheHelper.getData(key: 'lang')?? 'ar';
+    String lang = await CacheHelper.getData(key: 'lang') ?? 'ar';
 
-    DioHelper.getData(
-      url: AllOffers,
-      query: {
-        'lang':lang,
-      }
-    ).then((value) {
+    DioHelper.getData(url: AllOffers, query: {
+      'lang': lang,
+    }).then((value) {
       offersModel = OffersModel.fromJson(value.data);
       emit(AllOffersSuccessState());
-    }).catchError((error)
-    {
+    }).catchError((error) {
       emit(AllOffersErrorState(error.toString()));
       print(error.toString());
     });
-
   }
 
-
-   dynamic productDetailsModel;
+  dynamic productDetailsModel;
 
   void getProductDetails({
-    String? id,
-  })async {
+    required String id,
+  }) async {
     emit(GetProductDetailsLoadingState());
-    String lang = await CacheHelper.getData(key: 'lang')?? 'ar';
-    DioHelper.getData(
-      url: ProductDetails,
-      query: {
-        'productId':'$id',
-        'lang':'$lang',
-      }
-    ).then((value) {
+    String lang = await CacheHelper.getData(key: 'lang') ?? 'ar';
+    DioHelper.getData(url: ProductDetails, query: {
+      'productId': '$id',
+      'lang': '$lang',
+    }).then((value) {
       productDetailsModel = ProductDetailsModel.fromJson(value.data);
-
       emit(GetProductDetailsSuccessState());
-    }).catchError((error){
+    }).catchError((error) {
       print(error.toString());
       emit(GetProductDetailsErrorState(error.toString()));
     });
   }
 
   bool isLang = false;
-  void changeAppLang() async{
-
+  void changeAppLang() async {
     String lang = await CacheHelper.getData(key: 'lang') ?? "ar";
 
-    if(lang == 'ar'){
+    if (lang == 'ar') {
       isLang = true;
       isLang2 = false;
       emit(ChangeAppLang());
-    }else{
+    } else {
       isLang = !isLang;
       isLang2 = false;
-      CacheHelper.saveData(key: 'isLang', value: isLang).then((value){
+      CacheHelper.saveData(key: 'isLang', value: isLang).then((value) {
         emit(ChangeAppLang());
       });
     }
-
   }
 
   bool isLang2 = false;
-  void changeAppLang2(){
+  void changeAppLang2() {
     isLang2 = !isLang2;
     isLang = false;
-    CacheHelper.saveData(key: 'isLang2', value: isLang2).then((value){
+    CacheHelper.saveData(key: 'isLang2', value: isLang2).then((value) {
       emit(ChangeAppLang2());
     });
   }
-
-
-
 }

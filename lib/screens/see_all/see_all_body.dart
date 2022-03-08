@@ -85,14 +85,15 @@ class _AllproductBodyState extends State<AllproductBody>
                     height: MediaQuery.of(context).size.height * 0.9,
                     child: TabBarView(controller: tabController, children: [
                       (HomeCubit.get(context).products.isNotEmpty)
-                          ? GridView.count(
+                          ?
+                      GridView.count(
                               shrinkWrap: true,
                               primary: false,
                               physics: BouncingScrollPhysics(),
                               crossAxisCount: 2,
                               mainAxisSpacing: 2.5.w,
                               crossAxisSpacing: 2.h,
-                              childAspectRatio: 1 / 1.60,
+                              childAspectRatio: 1 / 1.7,
                               children: List.generate(
                                 HomeCubit.get(context).products.length,
                                 (index) => InkWell(
@@ -101,19 +102,14 @@ class _AllproductBodyState extends State<AllproductBody>
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                ProductDetailsScreen(
-                                                    // id: productId
-                                                    )));
-                                    //HomeCubit.get(context).products[index]['id'].toString()
+                                                ProductDetailsScreen()));
                                     HomeCubit.get(context).getProductDetails(
-                                      id: HomeCubit.get(context)
-                                          .products[index]['id']
-                                          .toString(),
+                                      id: HomeCubit.get(context).products[index]['id'].toString(),
                                     );
                                   },
                                   child: Container(
                                     padding: EdgeInsets.only(
-                                        right: 10, left: 10, top: 15),
+                                        right: 10, left: 10, top: 10),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(3),
                                         color: Colors.white,
@@ -127,7 +123,7 @@ class _AllproductBodyState extends State<AllproductBody>
                                           CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          height: 17.h,
+                                          height: 15.h,
                                           // color: ,
                                           child: customCachedNetworkImage(
                                               url: HomeCubit.get(context)
@@ -140,6 +136,8 @@ class _AllproductBodyState extends State<AllproductBody>
                                           HomeCubit.get(context)
                                               .products[index]['name']
                                               .toString(),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
                                           style: TextStyle(
                                               color: HexColor('#515C6F'),
                                               fontFamily: 'OpenSans',
@@ -204,7 +202,7 @@ class _AllproductBodyState extends State<AllproductBody>
                                           ),
                                         ),
                                         SizedBox(
-                                          height: 1.2.h,
+                                          height: 1.h,
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(
@@ -327,7 +325,7 @@ class _AllproductBodyState extends State<AllproductBody>
                                           ),
                                         ),
                                         SizedBox(
-                                          height: 1.h,
+                                          height: 0.5.h,
                                         ),
                                       ],
                                     ),
