@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +26,7 @@ class _AllproductBodyState extends State<AllproductBody>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
 
-  int selectedIndex =0;
+  int selectedIndex = 0;
 
   @override
   void initState() {
@@ -53,7 +55,7 @@ class _AllproductBodyState extends State<AllproductBody>
                 width: MediaQuery.of(context).size.width,
                 height: 7.h,
                 color: HexColor("#212224"),
-                padding:  EdgeInsets.symmetric(horizontal: 3.w),
+                padding: EdgeInsets.symmetric(horizontal: 3.w),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,15 +65,25 @@ class _AllproductBodyState extends State<AllproductBody>
                       child: TabBar(
                           controller: tabController,
                           indicatorColor: HexColor("#212224"),
-                          onTap: (index){
+                          onTap: (index) {
                             setState(() {
                               selectedIndex = index;
                             });
                           },
                           labelColor: Colors.red,
                           tabs: [
-                            Image.asset('assets/images/Group 202.png',color: (selectedIndex == 0)?HexColor('ffcdd2') : Colors.white,),
-                            Image.asset('assets/images/Group 203.png',color:  (selectedIndex == 1)?HexColor('ffcdd2') : Colors.white,),
+                            Image.asset(
+                              'assets/images/Group 202.png',
+                              color: (selectedIndex == 0)
+                                  ? HexColor('ffcdd2')
+                                  : Colors.white,
+                            ),
+                            Image.asset(
+                              'assets/images/Group 203.png',
+                              color: (selectedIndex == 1)
+                                  ? HexColor('ffcdd2')
+                                  : Colors.white,
+                            ),
                           ]),
                     ),
                   ],
@@ -85,8 +97,7 @@ class _AllproductBodyState extends State<AllproductBody>
                     height: MediaQuery.of(context).size.height * 0.9,
                     child: TabBarView(controller: tabController, children: [
                       (HomeCubit.get(context).products.isNotEmpty)
-                          ?
-                      GridView.count(
+                          ? GridView.count(
                               shrinkWrap: true,
                               primary: false,
                               physics: BouncingScrollPhysics(),
@@ -104,8 +115,13 @@ class _AllproductBodyState extends State<AllproductBody>
                                             builder: (context) =>
                                                 ProductDetailsScreen()));
                                     HomeCubit.get(context).getProductDetails(
-                                      id: HomeCubit.get(context).products[index]['id'].toString(),
+                                      id: HomeCubit.get(context)
+                                          .products[index]['id']
+                                          .toString(),
                                     );
+                                    print(HomeCubit.get(context)
+                                        .categories[index]['id']
+                                        .toString());
                                   },
                                   child: Container(
                                     padding: EdgeInsets.only(
@@ -191,7 +207,11 @@ class _AllproductBodyState extends State<AllproductBody>
                                             children: [
                                               Text(
                                                 '${LocaleKeys.Price.tr()} ' +
-                                          HomeCubit.get(context).products[index]['price'].toString()+ ' \$ ',
+                                                    HomeCubit.get(context)
+                                                        .products[index]
+                                                            ['price']
+                                                        .toString() +
+                                                    ' \$ ',
                                                 style: TextStyle(
                                                     color: HexColor('#4CB8BA'),
                                                     fontFamily: 'OpenSans',
@@ -359,7 +379,7 @@ class _AllproductBodyState extends State<AllproductBody>
                             ),
                       (HomeCubit.get(context).products.isNotEmpty)
                           ? ListView.separated(
-                        scrollDirection: Axis.vertical,
+                              scrollDirection: Axis.vertical,
                               primary: false,
                               shrinkWrap: true,
                               itemCount: HomeCubit.get(context).products.length,

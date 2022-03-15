@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
@@ -7,7 +9,6 @@ import 'package:sandra_app/screens/home/home_screen.dart';
 import 'package:sandra_app/screens/more/more_screen.dart';
 import 'package:sandra_app/screens/offers/offers_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -21,39 +22,35 @@ class LayoutScreen extends StatefulWidget {
 }
 
 class _LayoutScreenState extends State<LayoutScreen> {
+  int currentIndex = 0;
 
-int currentIndex = 0;
+  List<Widget> screens = [
+    CategoriesScreen(),
+    OffersScreen(),
+    HomeScreen(),
+    MoreScreen(),
+  ];
 
-List<Widget> screens = [
-  CategoriesScreen(),
-  OffersScreen(),
-  HomeScreen(),
-  MoreScreen(),
-];
-
-
-getscreen(){
-  if(widget.index != null){
-    setState(() {
-      currentIndex = widget.index;
-    });
-  }else{
-    setState(() {
-      currentIndex =0;
-    });
+  getscreen() {
+    if (widget.index != null) {
+      setState(() {
+        currentIndex = widget.index;
+      });
+    } else {
+      setState(() {
+        currentIndex = 0;
+      });
+    }
   }
-}
 
-@override
+  @override
   void initState() {
     this.getscreen();
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -63,9 +60,9 @@ getscreen(){
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: currentIndex,
             onTap: (index) {
-             setState(() {
-               currentIndex = index;
-             });
+              setState(() {
+                currentIndex = index;
+              });
             },
             items: [
               BottomNavigationBarItem(
@@ -82,14 +79,21 @@ getscreen(){
                   icon: ImageIcon(AssetImage("assets/images/more.png")),
                   label: LocaleKeys.More.tr()),
             ],
-
-            backgroundColor:HexColor('ffcdd2'),
+            backgroundColor: HexColor('ffcdd2'),
             elevation: 1,
             selectedItemColor: HexColor('FFFFFFFF'),
             unselectedItemColor: HexColor('#8A000000'),
             type: BottomNavigationBarType.fixed,
-            selectedLabelStyle: TextStyle(fontFamily: 'OpenSans',fontSize: 11,fontWeight: FontWeight.w600,),
-            unselectedLabelStyle: TextStyle(fontFamily: 'OpenSans',fontSize: 11,fontWeight: FontWeight.w600,),
+            selectedLabelStyle: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+            ),
+            unselectedLabelStyle: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         );
       },

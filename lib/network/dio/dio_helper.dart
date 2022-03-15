@@ -7,7 +7,7 @@ class DioHelper {
   static inti() {
     dio = Dio(
         BaseOptions(
-          baseUrl: 'https://beautiheath.com/sub/eshop/api/buyers/',
+          baseUrl: 'http://beautiheath.com/sub/eshop/api/buyers/',
           receiveDataWhenStatusError: true,
         ),
     );

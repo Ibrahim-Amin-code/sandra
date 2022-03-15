@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -74,7 +76,9 @@ class _ProductListItemState extends State<ProductListItem> {
                     ),
                     onRatingUpdate: (rating) {},
                   ),
-                  SizedBox(width: 2.w,),
+                  SizedBox(
+                    width: 2.w,
+                  ),
                   Text(
                     "( 4.5 )",
                     style: headingStyle.copyWith(
@@ -84,7 +88,6 @@ class _ProductListItemState extends State<ProductListItem> {
                   ),
                 ],
               ),
-
               spaceH(1.5.h),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +112,7 @@ class _ProductListItemState extends State<ProductListItem> {
                       await canLaunch(whatsappUrl) != null
                           ? launch(whatsappUrl)
                           : print(
-                          "open WhatsApp app link or do a snackbar withnotification that there is no WhatsApp installed");
+                              "open WhatsApp app link or do a snackbar withnotification that there is no WhatsApp installed");
                     },
                     child: Container(
                       width: 100,
@@ -139,14 +142,16 @@ class _ProductListItemState extends State<ProductListItem> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 22.w,),
+                  SizedBox(
+                    width: 22.w,
+                  ),
                   BlocConsumer<AppCubit, AppStates>(
                     listener: (context, state) {},
                     builder: (context, state) {
                       return InkWell(
                         onTap: () {
                           if (AppCubit.get(context)
-                              .isfavourite[widget.id.toString()] ==
+                                  .isfavourite[widget.id.toString()] ==
                               true) {
                             AppCubit.get(context).deletaFromDB(
                                 id: int.parse("${widget.id.toString()}"));
@@ -159,18 +164,18 @@ class _ProductListItemState extends State<ProductListItem> {
                           }
                         },
                         child: (AppCubit.get(context)
-                            .isfavourite[widget.id.toString()] ==
-                            true)
+                                    .isfavourite[widget.id.toString()] ==
+                                true)
                             ? Icon(
-                          Icons.favorite,
-                          color: HexColor("#E3319D"),
-                          size: 25,
-                        )
+                                Icons.favorite,
+                                color: HexColor("#E3319D"),
+                                size: 25,
+                              )
                             : Icon(
-                          Icons.favorite_outline,
-                          color: HexColor("#E3319D"),
-                          size: 25,
-                        ),
+                                Icons.favorite_outline,
+                                color: HexColor("#E3319D"),
+                                size: 25,
+                              ),
                       );
                     },
                     // child:

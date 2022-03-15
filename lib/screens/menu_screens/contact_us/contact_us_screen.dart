@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -11,7 +12,6 @@ import 'package:sizer/sizer.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class ContactUsScreen extends StatelessWidget {
-
   TextEditingController nameController = TextEditingController();
   TextEditingController subjectController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -27,24 +27,27 @@ class ContactUsScreen extends StatelessWidget {
         titleSpacing: 5,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Text(LocaleKeys.Contact_Us.tr(),style: TextStyle(
-            fontFamily: 'OpenSans',
-            color: Colors.white,
-            fontSize: 17.sp,
-            fontWeight: FontWeight.w600
-        ),),
-
+        title: Text(
+          LocaleKeys.Contact_Us.tr(),
+          style: TextStyle(
+              fontFamily: 'OpenSans',
+              color: Colors.white,
+              fontSize: 17.sp,
+              fontWeight: FontWeight.w600),
+        ),
         leading: Padding(
-          padding: const EdgeInsets.only(right: 10,left: 10),
+          padding: const EdgeInsets.only(right: 10, left: 10),
           child: InkWell(
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+              )),
         ),
         backgroundColor: HexColor('#ffcdd2'),
       ),
-
       body: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {
           if (state is ContactUsSuccessState) {
@@ -81,7 +84,6 @@ class ContactUsScreen extends StatelessWidget {
                         fontFamily: 'OpenSans'),
                   ),
                 ),
-
                 SizedBox(
                   height: 30,
                 ),
@@ -236,7 +238,7 @@ class ContactUsScreen extends StatelessWidget {
                     height: 6.h,
                     decoration: BoxDecoration(
                       color: HexColor('E3319D'),
-                        borderRadius: BorderRadius.circular(3),
+                      borderRadius: BorderRadius.circular(3),
                     ),
                     child: Center(
                       child: Text(

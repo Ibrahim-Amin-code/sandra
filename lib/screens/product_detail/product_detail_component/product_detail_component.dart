@@ -1,5 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
@@ -16,13 +16,14 @@ Widget buildAddToCartAndWishListContainer({
   required String title,
   required Color color,
   required Widget widget,
-}) => Container(
+}) =>
+    Container(
       height: 5.h,
       width: 50.w,
       padding: EdgeInsets.symmetric(horizontal: 2.w),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: color,
+        borderRadius: BorderRadius.circular(5),
+        color: color,
       ),
       child: Row(
         children: [
@@ -41,10 +42,17 @@ Widget buildAddToCartAndWishListContainer({
       ),
     );
 
-Widget buildAddToWishListRow({context,required String id,}) => Row(
+Widget buildAddToWishListRow({
+  context,
+  required String id,
+}) =>
+    Row(
       children: [
         InkWell(
-          onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>WriteReviewScreen()),),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => WriteReviewScreen()),
+          ),
           child: Text(
             ' ${LocaleKeys.Write_Review.tr()}',
             style: TextStyle(
@@ -56,48 +64,76 @@ Widget buildAddToWishListRow({context,required String id,}) => Row(
           ),
         ),
         Spacer(),
-
-        BlocConsumer<AppCubit,AppStates>(
-          listener: (context,state){},
-          builder: (context,state){
+        BlocConsumer<AppCubit, AppStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
             return InkWell(
-                onTap: (){
-                  if (AppCubit.get(context).isfavourite[HomeCubit.get(context).productDetailsModel.data.id.toString()] == true)
-                  {
+                onTap: () {
+                  if (AppCubit.get(context).isfavourite[HomeCubit.get(context)
+                          .productDetailsModel
+                          .data!
+                          .id
+                          .toString()] ==
+                      true) {
                     AppCubit.get(context).deletaFromDB(
-                        id: int.parse("${HomeCubit.get(context).productDetailsModel.data.id.toString()}"));
+                        id: int.parse(
+                            "${HomeCubit.get(context).productDetailsModel.data!.id.toString()}"));
                   } else {
-                    AppCubit.get(context)
-                        .inserttoDatabase(
-                        productImage: HomeCubit.get(context).productDetailsModel.data.coverImg.toString(),
-                        productId: HomeCubit.get(context).productDetailsModel.data.id.toString(),
-                        productPrice: HomeCubit.get(context).productDetailsModel.data.price.toString(),
-                        productName: HomeCubit.get(context).productDetailsModel.data.name.toString());
-                  }},
-
-                child:
-                (AppCubit.get(context).isfavourite[HomeCubit.get(context).productDetailsModel.data.id.toString()] ==true) ?
-                buildAddToCartAndWishListContainer(
-                    widget: Container(),
-                    //REMOVE
-                    title: LocaleKeys.REMOVE.tr(),color: HexColor('E3319D')) :
-                buildAddToCartAndWishListContainer(
-                    widget: Container(),
-                    title:  LocaleKeys.ADD_WISH.tr(),color: HexColor('E3319D'))
-
-            );
+                    AppCubit.get(context).inserttoDatabase(
+                        productImage: HomeCubit.get(context)
+                            .productDetailsModel
+                            .data!
+                            .coverImg
+                            .toString(),
+                        productId: HomeCubit.get(context)
+                            .productDetailsModel
+                            .data!
+                            .id
+                            .toString(),
+                        productPrice: HomeCubit.get(context)
+                            .productDetailsModel
+                            .data!
+                            .price
+                            .toString(),
+                        productName: HomeCubit.get(context)
+                            .productDetailsModel
+                            .data!
+                            .name
+                            .toString());
+                  }
+                },
+                child: (AppCubit.get(context).isfavourite[HomeCubit.get(context)
+                            .productDetailsModel
+                            .data!
+                            .id
+                            .toString()] ==
+                        true)
+                    ? buildAddToCartAndWishListContainer(
+                        widget: Container(),
+                        //REMOVE
+                        title: LocaleKeys.REMOVE.tr(),
+                        color: HexColor('E3319D'))
+                    : buildAddToCartAndWishListContainer(
+                        widget: Container(),
+                        title: LocaleKeys.ADD_WISH.tr(),
+                        color: HexColor('E3319D')));
           },
           // child: ,
         ),
       ],
     );
 
-Widget buildAddToCartRow({context, required String price,required String id,}) => Row(
+Widget buildAddToCartRow({
+  context,
+  required String price,
+  required String id,
+}) =>
+    Row(
       children: [
         Row(
           children: [
             Text(
-              LocaleKeys.Availability.tr() +':',
+              LocaleKeys.Availability.tr() + ':',
               style: TextStyle(
                 fontSize: 16,
                 color: HexColor('#515C6F'),
@@ -109,7 +145,11 @@ Widget buildAddToCartRow({context, required String price,required String id,}) =
               width: 5,
             ),
             Text(
-              HomeCubit.get(context).productDetailsModel.data.quantity.toString(),
+              HomeCubit.get(context)
+                  .productDetailsModel
+                  .data!
+                  .quantity
+                  .toString(),
               style: TextStyle(
                 fontSize: 16,
                 color: HexColor('#4CB8BA'),
@@ -122,16 +162,22 @@ Widget buildAddToCartRow({context, required String price,required String id,}) =
         Spacer(),
         InkWell(
             onTap: () async {
-              var whatsappUrl = "https://api.whatsapp.com/send?phone=+201150769418";
+              var whatsappUrl =
+                  "https://api.whatsapp.com/send?phone=+201150769418";
               await canLaunch(whatsappUrl) != null
-                  ? launch(whatsappUrl) :
-              print("open WhatsApp app link or do a snackbar withnotification that there is no WhatsApp installed");
+                  ? launch(whatsappUrl)
+                  : print(
+                      "open WhatsApp app link or do a snackbar withnotification that there is no WhatsApp installed");
             },
             child: buildAddToCartAndWishListContainer(
-              widget: Image.asset('assets/images/1216841.png',height: 25,width: 25,color: Colors.white,),
-              title: LocaleKeys.Order.tr(),
-              color: Colors.green
-            )),
+                widget: Image.asset(
+                  'assets/images/1216841.png',
+                  height: 25,
+                  width: 25,
+                  color: Colors.white,
+                ),
+                title: LocaleKeys.Order.tr(),
+                color: Colors.green)),
       ],
     );
 
@@ -140,15 +186,15 @@ Widget buildSeeAllButton() => Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
       height: 45,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: HexColor('E3319D'),
-          // gradient: LinearGradient(
-          //     colors: [HexColor('#FF9000'), HexColor('#FFBE03')]),
+        borderRadius: BorderRadius.circular(5),
+        color: HexColor('E3319D'),
+        // gradient: LinearGradient(
+        //     colors: [HexColor('#FF9000'), HexColor('#FFBE03')]),
       ),
       child: Row(
         children: [
           Padding(
-            padding:  EdgeInsets.only(left: 40.w),
+            padding: EdgeInsets.only(left: 40.w),
             child: Text(
               LocaleKeys.See_All.tr(),
               style: TextStyle(
@@ -174,4 +220,3 @@ Widget buildSeeAllButton() => Container(
         ],
       ),
     );
-

@@ -2,16 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:sandra_app/screens/components/size_config.dart';
-import 'package:sizer/sizer.dart';
 
-
-
-
-customCachedNetworkImage(
-    {required String url,
-      required context,
-      required BoxFit fit,
-    }) {
+customCachedNetworkImage({
+  required String url,
+  required context,
+  required BoxFit fit,
+}) {
   try {
     // ignore: unnecessary_null_comparison
     if (url == null || url == "") {
@@ -27,14 +23,13 @@ customCachedNetworkImage(
         width: MediaQuery.of(context).size.width,
         child: (Uri.parse(url).isAbsolute)
             ? CachedNetworkImage(
-            imageUrl: url,
-            fit: fit,
-            placeholder: (context, url) => Container(),
-
-            errorWidget: (context, url, error) {
-              return Icon(Icons.error_outline,color: HexColor("#AB0D03"));
-            })
-            : Icon(Icons.error_outline,color: HexColor("#AB0D03")),
+                imageUrl: url,
+                fit: fit,
+                placeholder: (context, url) => Container(),
+                errorWidget: (context, url, error) {
+                  return Icon(Icons.error_outline, color: HexColor("#AB0D03"));
+                })
+            : Icon(Icons.error_outline, color: HexColor("#AB0D03")),
       );
     }
   } catch (e) {
@@ -42,16 +37,11 @@ customCachedNetworkImage(
   }
 }
 
-
-
-
-
 String parseHtmlString(String htmlString) {
   final document = parse(htmlString);
   final String parsedString = parse(document.body!.text).documentElement!.text;
   return parsedString;
 }
-
 
 const kAnimationDuration = Duration(milliseconds: 200);
 
@@ -62,7 +52,6 @@ final headingStyle = TextStyle(
   color: Colors.black,
 );
 
-
 spaceH(double height) {
   return SizedBox(height: height);
 }
@@ -70,7 +59,6 @@ spaceH(double height) {
 spaceW(double width) {
   return SizedBox(width: width);
 }
-
 
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
@@ -83,7 +71,6 @@ class HexColor extends Color {
 
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
-
 
 multilineTextField(
     {required String title,
@@ -107,4 +94,3 @@ multilineTextField(
             borderSide: BorderSide(color: HexColor("#7070704D")))),
   );
 }
-

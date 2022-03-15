@@ -11,65 +11,61 @@ class ContactModel {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
 
-
 }
 
 class Data {
- late int id;
- late String logo;
- late String titleAr;
- late String titleEn;
- late String phone;
- late String email;
- late String addressAr;
- late String addressEn;
- late String longitude;
- late String latitude;
- late String descriptionAr;
-  late String descriptionEn;
- late String privacyAr;
- late String privacyEn;
- late String termsAr;
- late String agreementsAr;
- late String agreementsEn;
- late String termsEn;
- late String returnAr;
- late String returnEn;
- late int version;
- late String favicon;
- late dynamic createdAt;
- late String updatedAt;
+  int? id;
+  String? logo;
+  String? favicon;
+  String? titleAr;
+  String? titleEn;
+  String? phone;
+  String? email;
+  String? addressAr;
+  String? addressEn;
+  String? longitude;
+  String? latitude;
+  String? descriptionAr;
+  String? descriptionEn;
+  String? privacyAr;
+  String? privacyEn;
+  String? termsAr;
+  String? termsEn;
+  String? agreementsAr;
+  String? agreementsEn;
+  String? returnAr;
+  String? returnEn;
+  String? version;
 
   Data(
-      {
-       required this.id,
-        required  this.logo,
-        required this.titleAr,
-        required this.titleEn,
-        required this.phone,
-        required this.email,
-        required this.addressAr,
-        required  this.addressEn,
-        required  this.longitude,
-        required  this.latitude,
-        required  this.descriptionAr,
-          required this.descriptionEn,
-        required  this.privacyAr,
-        required this.privacyEn,
-        required this.termsAr,
-        required this.agreementsAr,
-        required this.agreementsEn,
-        required this.termsEn,
-        required this.returnAr,
-        required this.returnEn,
-        required  this.version,
-        required  this.favicon,
-        required this.createdAt,
-        required this.updatedAt});
+      {this.id,
+        this.logo,
+        this.favicon,
+        this.titleAr,
+        this.titleEn,
+        this.phone,
+        this.email,
+        this.addressAr,
+        this.addressEn,
+        this.longitude,
+        this.latitude,
+        this.descriptionAr,
+        this.descriptionEn,
+        this.privacyAr,
+        this.privacyEn,
+        this.termsAr,
+        this.termsEn,
+        this.agreementsAr,
+        this.agreementsEn,
+        this.returnAr,
+        this.returnEn,
+        this.version,
+      });
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     logo = json['logo'];
+    favicon = json['favicon'];
     titleAr = json['title_ar'];
     titleEn = json['title_en'];
     phone = json['phone'];
@@ -83,16 +79,12 @@ class Data {
     privacyAr = json['privacy_ar'];
     privacyEn = json['privacy_en'];
     termsAr = json['terms_ar'];
+    termsEn = json['terms_en'];
     agreementsAr = json['agreements_ar'];
     agreementsEn = json['agreements_en'];
-    termsEn = json['terms_en'];
     returnAr = json['return_ar'];
     returnEn = json['return_en'];
     version = json['version'];
-    favicon = json['favicon'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
+    }
 
 }

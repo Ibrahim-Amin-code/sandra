@@ -1,6 +1,7 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
@@ -19,23 +20,21 @@ import 'package:easy_localization/easy_localization.dart';
 class ProductsSearch extends SearchDelegate {
   ProductsSearch()
       : super(
-      searchFieldLabel: LocaleKeys.Search.tr(),
-      searchFieldStyle: TextStyle(
-           fontSize: 18, fontFamily: 'Cairo'));
+            searchFieldLabel: LocaleKeys.Search.tr(),
+            searchFieldStyle: TextStyle(fontSize: 18, fontFamily: 'Cairo'));
 
-  getSearchProduct({required String keyword}) async{
-   try{
-     String lang = await CacheHelper.getData(key: 'lang')?? 'ar';
-     var response = await http.get(Uri.parse("https://findfamily.net/eshop/api/buyers/products/search?name=$keyword&lang=$lang"));
-     searchModel = SearchModel.fromJson(json.decode(response.body));
-     return searchModel;
-   }catch(error){
-     print("erooooooooooooor" + error.toString());
-   }
- } 
-  
-  
-  
+  getSearchProduct({required String keyword}) async {
+    try {
+      String lang = await CacheHelper.getData(key: 'lang') ?? 'ar';
+      var response = await http.get(Uri.parse(
+          "http://beautiheath.com/sub/eshop/api/buyers/products/search?name=$keyword&lang=$lang"));
+      searchModel = SearchModel.fromJson(json.decode(response.body));
+      return searchModel;
+    } catch (error) {
+      print("erooooooooooooor" + error.toString());
+    }
+  }
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -61,65 +60,69 @@ class ProductsSearch extends SearchDelegate {
 
   SearchModel searchModel = SearchModel();
 
-
   @override
   Widget buildResults(BuildContext context) {
     return query.isEmpty
         ? Container()
         : FutureBuilder(
-        future: getSearchProduct(keyword: query.toString()),
-        builder: (context, AsyncSnapshot snapshot){
-          if(snapshot.hasData){
-            return GridView.count(
-                shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 2.5.w,
-                crossAxisSpacing: 2.h,
-                childAspectRatio: 1 / 1.60,
-                children: List.generate(
-                  searchModel.data!.length,
-                      (index) =>
-                      InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context)=>ProductDetailsScreen(
-                                // id: productId
-                              )));
+            future: getSearchProduct(keyword: query.toString()),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                return GridView.count(
+                    shrinkWrap: true,
+                    physics: BouncingScrollPhysics(),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 2.5.w,
+                    crossAxisSpacing: 2.h,
+                    childAspectRatio: 1 / 1.60,
+                    children: List.generate(
+                      searchModel.data!.length,
+                      (index) => InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProductDetailsScreen(
+                                      // id: productId
+                                      )));
                           //HomeCubit.get(context).products[index]['id'].toString()
-                          HomeCubit.get(context).getProductDetails(id:  searchModel.data![index].id.toString(),);
-
+                          HomeCubit.get(context).getProductDetails(
+                            id: searchModel.data![index].id.toString(),
+                          );
                         },
                         child: Container(
-                          padding: EdgeInsets.only(right: 10,left: 10,top: 15),
+                          padding:
+                              EdgeInsets.only(right: 10, left: 10, top: 15),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(3),
                               color: HexColor('FFFFFFFF'),
                               boxShadow: [
                                 BoxShadow(
-                                    blurRadius: 15,
-                                    color: HexColor('1F000000')
-                                )
-                              ]
-                          ),
+                                    blurRadius: 15, color: HexColor('1F000000'))
+                              ]),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height:17.h,
+                                height: 17.h,
                                 // color: ,
                                 child: customCachedNetworkImage(
-                                    url: searchModel.data![index].coverImg.toString(), context: context, fit: BoxFit.contain),
+                                    url: searchModel.data![index].coverImg
+                                        .toString(),
+                                    context: context,
+                                    fit: BoxFit.contain),
                               ),
-                              Text(searchModel.data![index].name.toString(),
+                              Text(
+                                searchModel.data![index].name.toString(),
                                 style: TextStyle(
                                     color: HexColor('#515C6F'),
                                     fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 14.sp
-                                ),
+                                    fontSize: 14.sp),
                               ),
-                              SizedBox(height: 1.0.h,),
+                              SizedBox(
+                                height: 1.0.h,
+                              ),
                               Row(
                                 children: [
                                   RatingBar.builder(
@@ -138,111 +141,153 @@ class ProductsSearch extends SearchDelegate {
                                       print(rating);
                                     },
                                   ),
-                                  SizedBox(width: 5,),
-                                  Text('(4.5)',style: TextStyle(
-                                    fontSize: 14,
-                                    color: HexColor('#C9C9C9'),
-                                    fontFamily: 'OpenSans',
-                                    fontWeight: FontWeight.w600,
-                                  ),)
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    '(4.5)',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: HexColor('#C9C9C9'),
+                                      fontFamily: 'OpenSans',
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  )
                                 ],
                               ),
-                              SizedBox(height: 0.8.h,),
+                              SizedBox(
+                                height: 0.8.h,
+                              ),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 5),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('price '+ searchModel.data![index].price.toString(),
+                                    Text(
+                                      'price ' +
+                                          searchModel.data![index].price
+                                              .toString(),
                                       style: TextStyle(
                                           color: HexColor('#4CB8BA'),
                                           fontFamily: 'OpenSans',
                                           fontWeight: FontWeight.w600,
-                                          fontSize: 11.sp
-                                      ),
+                                          fontSize: 11.sp),
                                     ),
-                                    Text('|',
+                                    Text(
+                                      '|',
                                       style: TextStyle(
                                         color: HexColor('#C9C9C9'),
                                         fontFamily: 'OpenSans',
                                         fontWeight: FontWeight.w600,
                                         fontSize: 14,
-
                                       ),
                                     ),
-                                    Text('SAR 300',
+                                    Text(
+                                      'SAR 300',
                                       style: TextStyle(
                                         color: HexColor('#C9C9C9'),
                                         fontFamily: 'OpenSans',
                                         fontWeight: FontWeight.w600,
                                         fontSize: 11.sp,
-                                        decoration:TextDecoration.lineThrough,
-                                        decorationStyle: TextDecorationStyle.double,
+                                        decoration: TextDecoration.lineThrough,
+                                        decorationStyle:
+                                            TextDecorationStyle.double,
                                         decorationColor: HexColor('C9C9C9'),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 1.2.h,),
+                              SizedBox(
+                                height: 1.2.h,
+                              ),
                               Padding(
-                                padding: EdgeInsets.only(right: 1.w,left: 1.w),
+                                padding: EdgeInsets.only(right: 1.w, left: 1.w),
                                 child: Row(
                                   children: [
-                                    BlocConsumer<AppCubit,AppStates>(
-                                      listener:(context,state){},
-                                      builder: (context,state){
+                                    BlocConsumer<AppCubit, AppStates>(
+                                      listener: (context, state) {},
+                                      builder: (context, state) {
                                         return InkWell(
-                                          onTap: (){
-                                            if (AppCubit.get(context).isfavourite[searchModel.data![index].id.toString()] == true)
-                                            {
+                                          onTap: () {
+                                            if (AppCubit.get(context)
+                                                        .isfavourite[
+                                                    searchModel.data![index].id
+                                                        .toString()] ==
+                                                true) {
                                               AppCubit.get(context).deletaFromDB(
-                                                  id: int.parse("${searchModel.data![index].id.toString()}"));
+                                                  id: int.parse(
+                                                      "${searchModel.data![index].id.toString()}"));
                                             } else {
-                                              AppCubit.get(context).inserttoDatabase(
-                                                  productImage: searchModel.data![index].coverImg.toString(),
-                                                  productId: searchModel.data![index].id.toString(),
-                                                  productPrice: searchModel.data![index].price.toString(),
-                                                  productName: searchModel.data![index].name.toString());
-                                            }},
-                                          child:
-                                          (AppCubit.get(context).isfavourite[searchModel.data![index].id.toString()] ==true) ?
-                                          Icon(
-                                            Icons.favorite,
-                                            color: HexColor("#E3319D"),
-                                          ) : Icon(
-                                            Icons.favorite_outline,
-                                            color: HexColor("#E3319D"),
-                                          ),
+                                              AppCubit.get(context)
+                                                  .inserttoDatabase(
+                                                      productImage: searchModel
+                                                          .data![index].coverImg
+                                                          .toString(),
+                                                      productId: searchModel
+                                                          .data![index].id
+                                                          .toString(),
+                                                      productPrice: searchModel
+                                                          .data![index].price
+                                                          .toString(),
+                                                      productName: searchModel
+                                                          .data![index].name
+                                                          .toString());
+                                            }
+                                          },
+                                          child: (AppCubit.get(context)
+                                                          .isfavourite[
+                                                      searchModel
+                                                          .data![index].id
+                                                          .toString()] ==
+                                                  true)
+                                              ? Icon(
+                                                  Icons.favorite,
+                                                  color: HexColor("#E3319D"),
+                                                )
+                                              : Icon(
+                                                  Icons.favorite_outline,
+                                                  color: HexColor("#E3319D"),
+                                                ),
                                         );
                                       },
                                       // child:
                                     ),
                                     Spacer(),
                                     InkWell(
-                                      onTap: ()async{
-                                        var whatsappUrl = "https://api.whatsapp.com/send?phone=+201150769418";
-                                        await canLaunch(
-                                            whatsappUrl) != null
-                                            ? launch(whatsappUrl) :
-                                        print("open WhatsApp app link or do a snackbar withnotification that there is no WhatsApp installed");
+                                      onTap: () async {
+                                        var whatsappUrl =
+                                            "https://api.whatsapp.com/send?phone=+201150769418";
+                                        await canLaunch(whatsappUrl) != null
+                                            ? launch(whatsappUrl)
+                                            : print(
+                                                "open WhatsApp app link or do a snackbar withnotification that there is no WhatsApp installed");
                                       },
                                       child: Container(
                                         width: 29.w,
                                         height: 4.h,
-                                        padding: EdgeInsets.symmetric(horizontal: 10),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10),
                                         color: HexColor('FF4CAF50'),
                                         child: Row(
                                           children: [
-                                            Image.asset('assets/images/1216841.png',height: 25,width: 20,color: HexColor('FFFFFFFF'),),
-                                            SizedBox(width: 15,),
-                                            Text(LocaleKeys.Order.tr(),
+                                            Image.asset(
+                                              'assets/images/1216841.png',
+                                              height: 25,
+                                              width: 20,
+                                              color: HexColor('FFFFFFFF'),
+                                            ),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            Text(
+                                              LocaleKeys.Order.tr(),
                                               style: TextStyle(
                                                   fontSize: 10.sp,
                                                   fontWeight: FontWeight.w600,
                                                   fontFamily: 'OpenSans',
-                                                  color: HexColor('#FFFFFF')
-                                              ),
+                                                  color: HexColor('#FFFFFF')),
                                             ),
                                           ],
                                         ),
@@ -251,21 +296,21 @@ class ProductsSearch extends SearchDelegate {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 1.h,),
+                              SizedBox(
+                                height: 1.h,
+                              ),
                             ],
                           ),
                         ),
                       ),
-                )
-            );
-          }else{
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-
-          }
-        },
-    );
+                    ));
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          );
   }
 
   @override
@@ -273,204 +318,251 @@ class ProductsSearch extends SearchDelegate {
     return query.isEmpty
         ? Container()
         : FutureBuilder(
-      future: getSearchProduct(keyword: query.toString()),
-      builder: (context, AsyncSnapshot snapshot){
-        if(snapshot.hasData){
-          return GridView.count(
-              shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
-              crossAxisCount: 2,
-              mainAxisSpacing: 2.5.w,
-              crossAxisSpacing: 2.h,
-              childAspectRatio: 1 / 1.60,
-              children: List.generate(
-                searchModel.data!.length,
-                    (index) =>
-                    InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(
-                            builder: (context)=>ProductDetailsScreen(
-                              // id: productId
-                            )));
-                        //HomeCubit.get(context).products[index]['id'].toString()
-                        HomeCubit.get(context).getProductDetails(id:  searchModel.data![index].id.toString(),);
-
-                      },
-                      child: Container(
-                        padding: EdgeInsets.only(right: 10,left: 10,top: 15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3),
-                            color: HexColor('FFFFFFFF'),
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 15,
-                                  color: HexColor('1F000000')
-                              )
-                            ]
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height:17.h,
-                              // color: ,
-                              child: customCachedNetworkImage(
-                                  url: searchModel.data![index].coverImg.toString(), context: context, fit: BoxFit.contain),
-                            ),
-                            Text(searchModel.data![index].name.toString(),
-                              style: TextStyle(
-                                  color: HexColor('#515C6F'),
-                                  fontFamily: 'OpenSans',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14.sp
+            future: getSearchProduct(keyword: query.toString()),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                return GridView.count(
+                    shrinkWrap: true,
+                    physics: BouncingScrollPhysics(),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 2.5.w,
+                    crossAxisSpacing: 2.h,
+                    childAspectRatio: 1 / 1.60,
+                    children: List.generate(
+                      searchModel.data!.length,
+                      (index) => InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProductDetailsScreen(
+                                      // id: productId
+                                      )));
+                          //HomeCubit.get(context).products[index]['id'].toString()
+                          HomeCubit.get(context).getProductDetails(
+                            id: searchModel.data![index].id.toString(),
+                          );
+                        },
+                        child: Container(
+                          padding:
+                              EdgeInsets.only(right: 10, left: 10, top: 15),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3),
+                              color: HexColor('FFFFFFFF'),
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 15, color: HexColor('1F000000'))
+                              ]),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 17.h,
+                                // color: ,
+                                child: customCachedNetworkImage(
+                                    url: searchModel.data![index].coverImg
+                                        .toString(),
+                                    context: context,
+                                    fit: BoxFit.contain),
                               ),
-                            ),
-                            SizedBox(height: 1.0.h,),
-                            Row(
-                              children: [
-                                RatingBar.builder(
-                                  initialRating: 3,
-                                  minRating: 1,
-                                  direction: Axis.horizontal,
-                                  allowHalfRating: true,
-                                  itemCount: 5,
-                                  itemSize: 20,
-                                  // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                  itemBuilder: (context, _) => Icon(
-                                    Icons.star,
-                                    color: HexColor('FFFFC107'),
-                                  ),
-                                  onRatingUpdate: (rating) {
-                                    print(rating);
-                                  },
-                                ),
-                                SizedBox(width: 5,),
-                                Text('(4.5)',style: TextStyle(
-                                  fontSize: 14,
-                                  color: HexColor('#C9C9C9'),
-                                  fontFamily: 'OpenSans',
-                                  fontWeight: FontWeight.w600,
-                                ),)
-                              ],
-                            ),
-                            SizedBox(height: 0.8.h,),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 5),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              Text(
+                                searchModel.data![index].name.toString(),
+                                style: TextStyle(
+                                    color: HexColor('#515C6F'),
+                                    fontFamily: 'OpenSans',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14.sp),
+                              ),
+                              SizedBox(
+                                height: 1.0.h,
+                              ),
+                              Row(
                                 children: [
-                                  Text('price '+ searchModel.data![index].price.toString(),
+                                  RatingBar.builder(
+                                    initialRating: 3,
+                                    minRating: 1,
+                                    direction: Axis.horizontal,
+                                    allowHalfRating: true,
+                                    itemCount: 5,
+                                    itemSize: 20,
+                                    // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                    itemBuilder: (context, _) => Icon(
+                                      Icons.star,
+                                      color: HexColor('FFFFC107'),
+                                    ),
+                                    onRatingUpdate: (rating) {
+                                      print(rating);
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    '(4.5)',
                                     style: TextStyle(
-                                        color: HexColor('#4CB8BA'),
+                                      fontSize: 14,
+                                      color: HexColor('#C9C9C9'),
+                                      fontFamily: 'OpenSans',
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 0.8.h,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'price ' +
+                                          searchModel.data![index].price
+                                              .toString(),
+                                      style: TextStyle(
+                                          color: HexColor('#4CB8BA'),
+                                          fontFamily: 'OpenSans',
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 11.sp),
+                                    ),
+                                    Text(
+                                      '|',
+                                      style: TextStyle(
+                                        color: HexColor('#C9C9C9'),
                                         fontFamily: 'OpenSans',
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 11.sp
-                                    ),
-                                  ),
-                                  Text('|',
-                                    style: TextStyle(
-                                      color: HexColor('#C9C9C9'),
-                                      fontFamily: 'OpenSans',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-
-                                    ),
-                                  ),
-                                  Text('SAR 300',
-                                    style: TextStyle(
-                                      color: HexColor('#C9C9C9'),
-                                      fontFamily: 'OpenSans',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 11.sp,
-                                      decoration:TextDecoration.lineThrough,
-                                      decorationStyle: TextDecorationStyle.double,
-                                      decorationColor: HexColor('C9C9C9'),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 1.2.h,),
-                            Padding(
-                              padding: EdgeInsets.only(right: 1.w,left: 1.w),
-                              child: Row(
-                                children: [
-                                  BlocConsumer<AppCubit,AppStates>(
-                                    listener:(context,state){},
-                                    builder: (context,state){
-                                      return InkWell(
-                                        onTap: (){
-                                          if (AppCubit.get(context).isfavourite[searchModel.data![index].id.toString()] == true)
-                                          {
-                                            AppCubit.get(context).deletaFromDB(
-                                                id: int.parse("${searchModel.data![index].id.toString()}"));
-                                          } else {
-                                            AppCubit.get(context).inserttoDatabase(
-                                                productImage: searchModel.data![index].coverImg.toString(),
-                                                productId: searchModel.data![index].id.toString(),
-                                                productPrice: searchModel.data![index].price.toString(),
-                                                productName: searchModel.data![index].name.toString());
-                                          }},
-                                        child:
-                                        (AppCubit.get(context).isfavourite[searchModel.data![index].id.toString()] ==true) ?
-                                        Icon(
-                                          Icons.favorite,
-                                          color: HexColor("#E3319D"),
-                                        ) : Icon(
-                                          Icons.favorite_outline,
-                                          color: HexColor("#E3319D"),
-                                        ),
-                                      );
-                                    },
-                                    // child:
-                                  ),
-                                  Spacer(),
-                                  InkWell(
-                                    onTap: ()async{
-                                      var whatsappUrl = "https://api.whatsapp.com/send?phone=+201150769418";
-                                      await canLaunch(
-                                          whatsappUrl) != null
-                                          ? launch(whatsappUrl) :
-                                      print("open WhatsApp app link or do a snackbar withnotification that there is no WhatsApp installed");
-                                    },
-                                    child: Container(
-                                      width: 29.w,
-                                      height: 4.h,
-                                      padding: EdgeInsets.symmetric(horizontal: 10),
-                                      color: HexColor('FF4CAF50'),
-                                      child: Row(
-                                        children: [
-                                          Image.asset('assets/images/1216841.png',height: 25,width: 20,color: HexColor('FFFFFFFF'),),
-                                          SizedBox(width: 15,),
-                                          Text(LocaleKeys.Order.tr(),
-                                            style: TextStyle(
-                                                fontSize: 10.sp,
-                                                fontWeight: FontWeight.w600,
-                                                fontFamily: 'OpenSans',
-                                                color: HexColor('#FFFFFF')
-                                            ),
-                                          ),
-                                        ],
+                                        fontSize: 14,
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      'SAR 300',
+                                      style: TextStyle(
+                                        color: HexColor('#C9C9C9'),
+                                        fontFamily: 'OpenSans',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 11.sp,
+                                        decoration: TextDecoration.lineThrough,
+                                        decorationStyle:
+                                            TextDecorationStyle.double,
+                                        decorationColor: HexColor('C9C9C9'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 1.h,),
-                          ],
+                              SizedBox(
+                                height: 1.2.h,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 1.w, left: 1.w),
+                                child: Row(
+                                  children: [
+                                    BlocConsumer<AppCubit, AppStates>(
+                                      listener: (context, state) {},
+                                      builder: (context, state) {
+                                        return InkWell(
+                                          onTap: () {
+                                            if (AppCubit.get(context)
+                                                        .isfavourite[
+                                                    searchModel.data![index].id
+                                                        .toString()] ==
+                                                true) {
+                                              AppCubit.get(context).deletaFromDB(
+                                                  id: int.parse(
+                                                      "${searchModel.data![index].id.toString()}"));
+                                            } else {
+                                              AppCubit.get(context)
+                                                  .inserttoDatabase(
+                                                      productImage: searchModel
+                                                          .data![index].coverImg
+                                                          .toString(),
+                                                      productId: searchModel
+                                                          .data![index].id
+                                                          .toString(),
+                                                      productPrice: searchModel
+                                                          .data![index].price
+                                                          .toString(),
+                                                      productName: searchModel
+                                                          .data![index].name
+                                                          .toString());
+                                            }
+                                          },
+                                          child: (AppCubit.get(context)
+                                                          .isfavourite[
+                                                      searchModel
+                                                          .data![index].id
+                                                          .toString()] ==
+                                                  true)
+                                              ? Icon(
+                                                  Icons.favorite,
+                                                  color: HexColor("#E3319D"),
+                                                )
+                                              : Icon(
+                                                  Icons.favorite_outline,
+                                                  color: HexColor("#E3319D"),
+                                                ),
+                                        );
+                                      },
+                                      // child:
+                                    ),
+                                    Spacer(),
+                                    InkWell(
+                                      onTap: () async {
+                                        var whatsappUrl =
+                                            "https://api.whatsapp.com/send?phone=+201150769418";
+                                        await canLaunch(whatsappUrl) != null
+                                            ? launch(whatsappUrl)
+                                            : print(
+                                                "open WhatsApp app link or do a snackbar withnotification that there is no WhatsApp installed");
+                                      },
+                                      child: Container(
+                                        width: 29.w,
+                                        height: 4.h,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10),
+                                        color: HexColor('FF4CAF50'),
+                                        child: Row(
+                                          children: [
+                                            Image.asset(
+                                              'assets/images/1216841.png',
+                                              height: 25,
+                                              width: 20,
+                                              color: HexColor('FFFFFFFF'),
+                                            ),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            Text(
+                                              LocaleKeys.Order.tr(),
+                                              style: TextStyle(
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontFamily: 'OpenSans',
+                                                  color: HexColor('#FFFFFF')),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 1.h,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-              )
+                    ));
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
           );
-        }else{
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-
-        }
-      },
-    );
   }
 }

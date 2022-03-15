@@ -12,8 +12,7 @@ import 'network/bloc_observer.dart';
 import 'network/dio/dio_helper.dart';
 
 Future<void> main() async {
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: HexColor('ffcdd2'),
     statusBarIconBrightness: Brightness.light,
     statusBarBrightness: Brightness.light,
@@ -27,32 +26,33 @@ Future<void> main() async {
     supportedLocales: [Locale('ar', ''), Locale('en', '')],
     path: 'assets/translations', // <-- change the path of the translation files
     assetLoader: CodegenLoader(),
-    child: MyApp(),));
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Sizer(
-      builder: (context, orientation, deviceType){
+      builder: (context, orientation, deviceType) {
         return MultiBlocProvider(
             providers: [
-              BlocProvider<AppCubit>(create: (context) => AppCubit()..createDb()),
               BlocProvider<HomeCubit>(
-                  create: (context) => HomeCubit()
-                    ..getAllProducts()
-                    ..getProducts(id: '',brandId: '')
-                    ..getCategories()
-                    ..getShops()
-                    ..getBanners()
-                    ..getAllOffers()
-                    ..getProductDetails( id: '')
-                    ..contactInfo()..changeAppLang(),
-
+                create: (context) => HomeCubit()
+                  ..getAllProducts()
+                  ..getProducts(id: '', brandId: '')
+                  ..getCategories()
+                  ..getShops()
+                  ..getBanners()
+                  ..getAllOffers()
+                  ..getProductDetails(id: '')
+                  ..contactInfo()
+                  ..changeAppLang(),
               ),
+              BlocProvider<AppCubit>(
+                  create: (context) => AppCubit()..createDb()),
+
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,

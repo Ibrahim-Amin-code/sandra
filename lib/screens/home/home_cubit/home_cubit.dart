@@ -1,19 +1,10 @@
-import 'dart:convert';
-
-import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:http/http.dart' as http;
 import 'package:sandra_app/models/all_offers.dart';
 import 'package:sandra_app/models/contact_model.dart';
-import 'package:sandra_app/models/get_products_model.dart';
 import 'package:sandra_app/models/product_detailes_model.dart';
-import 'package:sandra_app/models/wish_list_model.dart';
 import 'package:sandra_app/network/cache/cache_helper.dart';
 import 'package:sandra_app/network/dio/dio_helper.dart';
 import 'package:sandra_app/network/end_points.dart';
-import 'package:sandra_app/screens/components/constants.dart';
 import 'package:sandra_app/screens/home/home_cubit/states.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -47,6 +38,7 @@ class HomeCubit extends Cubit<HomeState> {
     }).then((value) {
       categories.clear();
       categories.addAll(value.data['data']);
+      print(value.data);
       emit(CategoriesSuccessState());
     }).catchError((error) {
       emit(CategoriesErrorState(error.toString()));
@@ -173,9 +165,9 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  dynamic productDetailsModel;
+  ProductDetailsModel productDetailsModel = ProductDetailsModel();
 
-  void getProductDetails({
+  getProductDetails({
     required String id,
   }) async {
     emit(GetProductDetailsLoadingState());
@@ -186,6 +178,7 @@ class HomeCubit extends Cubit<HomeState> {
     }).then((value) {
       productDetailsModel = ProductDetailsModel.fromJson(value.data);
       emit(GetProductDetailsSuccessState());
+      return productDetailsModel;
     }).catchError((error) {
       print(error.toString());
       emit(GetProductDetailsErrorState(error.toString()));

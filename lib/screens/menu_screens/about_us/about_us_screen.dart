@@ -1,9 +1,7 @@
-
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:sandra_app/generated/locale_keys.g.dart';
 import 'package:sandra_app/network/cache/cache_helper.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sandra_app/screens/components/constants.dart';
@@ -12,7 +10,6 @@ import 'package:sandra_app/screens/home/home_cubit/states.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-
 class AboutUsScreen extends StatefulWidget {
   @override
   _AboutUsScreenState createState() => _AboutUsScreenState();
@@ -20,7 +17,7 @@ class AboutUsScreen extends StatefulWidget {
 
 class _AboutUsScreenState extends State<AboutUsScreen> {
   String lang = '';
-  getLang()async{
+  getLang() async {
     final String data = await CacheHelper.getData(key: 'lang');
     setState(() {
       lang = data;
@@ -32,14 +29,13 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
     this.getLang();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-
     void launchEmailSubmission() async {
       final Uri params = Uri(
-          scheme: 'mailto',
-          path: HomeCubit.get(context).contactModel.data!.email,
-
+        scheme: 'mailto',
+        path: HomeCubit.get(context).contactModel.data!.email,
       );
       String url = params.toString();
       if (await canLaunch(url)) {
@@ -55,57 +51,73 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
         titleSpacing: 5,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Text(LocaleKeys.About_Us.tr(),style: TextStyle(
-            fontFamily: 'OpenSans',
-            color: Colors.white,
-            fontSize: 17.sp,
-            fontWeight: FontWeight.w600
-        ),),
-
+        title: Text(
+          LocaleKeys.About_Us.tr(),
+          style: TextStyle(
+              fontFamily: 'OpenSans',
+              color: Colors.white,
+              fontSize: 17.sp,
+              fontWeight: FontWeight.w600),
+        ),
         leading: Padding(
-          padding: const EdgeInsets.only(right: 10,left: 10),
+          padding: const EdgeInsets.only(right: 10, left: 10),
           child: InkWell(
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+              )),
         ),
         backgroundColor: HexColor('#ffcdd2'),
       ),
-      body: BlocConsumer<HomeCubit,HomeState>(
-        listener: (context,state){},
-        builder: (context,state){
+      body: BlocConsumer<HomeCubit, HomeState>(
+        listener: (context, state) {},
+        builder: (context, state) {
           return ConditionalBuilder(
-            condition: state is! ContactInfoLoadingState ,
-            builder: (context)=> ListView(
-              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+            condition: state is! ContactInfoLoadingState,
+            builder: (context) => ListView(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               children: [
                 Container(
                   height: 65.h,
                   // width: 340,
-                  child:(lang == 'en')? Text(parseHtmlString(HomeCubit.get(context).contactModel.data!.descriptionEn),
-                    style: TextStyle(
-                        fontSize: 12.5.sp,
-                        fontWeight: FontWeight.w600,
-                        color: HexColor('#7E7E7E'),
-                        fontFamily: 'OpenSans'
-                    ),
-                  ):Text(parseHtmlString(HomeCubit.get(context).contactModel.data!.descriptionAr),
-                    style: TextStyle(
-                        fontSize: 12.5.sp,
-                        fontWeight: FontWeight.w600,
-                        color: HexColor('#7E7E7E'),
-                        fontFamily: 'OpenSans'
-                    ),
-                  ),
+                  child: (lang == 'en')
+                      ? Text(
+                          parseHtmlString(HomeCubit.get(context)
+                              .contactModel
+                              .data!
+                              .descriptionEn!),
+                          style: TextStyle(
+                              fontSize: 12.5.sp,
+                              fontWeight: FontWeight.w600,
+                              color: HexColor('#7E7E7E'),
+                              fontFamily: 'OpenSans'),
+                        )
+                      : Text(
+                          parseHtmlString(HomeCubit.get(context)
+                              .contactModel
+                              .data!
+                              .descriptionAr!),
+                          style: TextStyle(
+                              fontSize: 12.5.sp,
+                              fontWeight: FontWeight.w600,
+                              color: HexColor('#7E7E7E'),
+                              fontFamily: 'OpenSans'),
+                        ),
                 ),
-                Text(LocaleKeys.Contact_Us.tr(),style: TextStyle(
-                    color: HexColor('#515C6F'),
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans',
-                    fontSize: 15.sp
-                ),),
-                SizedBox(height: 15,),
+                Text(
+                  LocaleKeys.Contact_Us.tr(),
+                  style: TextStyle(
+                      color: HexColor('#515C6F'),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'OpenSans',
+                      fontSize: 15.sp),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Row(
@@ -115,23 +127,35 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                       Image.asset('assets/images/twitter.png'),
                       Image.asset('assets/images/instagram-sketched.png'),
                       InkWell(
-                          onTap: (){
+                          onTap: () {
                             launchEmailSubmission();
-                            print(HomeCubit.get(context).contactModel.data!.email);
+                            print(HomeCubit.get(context)
+                                .contactModel
+                                .data!
+                                .email);
                           },
-                          child: Icon(Icons.email_outlined,size: 55,color: Colors.blue.shade300)),
+                          child: Icon(Icons.email_outlined,
+                              size: 55, color: Colors.blue.shade300)),
                       InkWell(
-                          onTap: ()async {
-                           await launch("tel://${HomeCubit.get(context).contactModel.data!.phone}");
-                            print(HomeCubit.get(context).contactModel.data!.phone);
+                          onTap: () async {
+                            await launch(
+                                "tel://${HomeCubit.get(context).contactModel.data!.phone}");
+                            print(HomeCubit.get(context)
+                                .contactModel
+                                .data!
+                                .phone);
                           },
-                          child: Icon(Icons.call_outlined,size: 40,color: Colors.green,)),
+                          child: Icon(
+                            Icons.call_outlined,
+                            size: 40,
+                            color: Colors.green,
+                          )),
                     ],
                   ),
                 )
               ],
             ),
-            fallback: (context)=> Center(child: CircularProgressIndicator()),
+            fallback: (context) => Center(child: CircularProgressIndicator()),
           );
         },
       ),

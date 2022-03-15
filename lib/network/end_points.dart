@@ -10,7 +10,6 @@ const GetProducts = 'products';
 const ContactInfo = 'contactinfo';
 const GetBanners = 'banners';
 const GetAddresses = 'addresses';
-const SearchProducts = 'search';
 const AddToCart = 'addtocart';
 const GetCarts = 'product/carts';
 const ContactUs = 'sendhelp';
