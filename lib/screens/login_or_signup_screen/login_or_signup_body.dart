@@ -66,7 +66,8 @@ class LoginOrSignupBody extends StatelessWidget {
                     background: HexColor('E3319D'),
                     isUpperCase: true,
                     function: () {
-                      launch("https://findfamily.net/eshop/vendors/dashboard");
+                      // launch("https://findfamily.net/eshop/vendors/dashboard");
+                      launch("http://beautiheath.com/sub/eshop/");
                     },
                     radius: 20,
                   ),
